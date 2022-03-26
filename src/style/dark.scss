@@ -1,0 +1,46 @@
+.app{
+    background-color: #222;
+    color: rgb(156, 156, 156);
+    .table{
+        background-color: #222;
+
+        .tablecell{
+            color: gray;
+            border-bottom: 1px solid gray;
+        }
+    }
+    .navbar{
+        color: #999;
+        border-color: #333;
+
+        .search{
+            border-color: gray;
+            input{
+                color: rgb(148, 145, 145);
+            }
+        }
+        
+    }
+    .sidebar{
+        background-color: #222;
+        border-color: #333;
+        .top{
+            .logo{
+                color: gray;
+            }
+        }
+        hr{
+            border-color: #333;
+        }
+        ul{
+            li{
+                &:hover{
+                    background-color: #333;
+                }
+                .icon{
+                    color: #999;
+                }
+            }
+        }
+    }
+}
