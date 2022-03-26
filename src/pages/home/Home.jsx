@@ -18,10 +18,10 @@ export const Home = () => {
            <Widget  type="order"/>
            <Widget  type="balance"/>
          </div>
-         {/* <div className="charts">
+         <div className="charts">
            <Featured/>
            <Chart/>
-         </div> */}
+         </div>
          <div className="listContainer">
            <div className="listTitle">
              Latest Transaction
