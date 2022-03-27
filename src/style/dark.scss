@@ -43,4 +43,40 @@
             }
         }
     }
+    
+        .datatable{
+            .dataGrid{
+                color: gray;
+                border: none;
+              .viewButton,.deleteButton{
+                  color: gray;
+                  border:none;
+                  border: 1px solid gray;
+                  &:hover{
+                    background-color: #333;
+                      
+                  }
+              }
+            }
+            .MuiTablePagination-root{
+                color: gray;
+
+                .MuiIconButton-root{
+                    color: gray;
+                }
+            }
+            .link{
+                color: gray;
+                border: 1px solid gray;
+                &:hover{
+                    background-color: #333;
+                }
+            }
+           
+        }
+        input{
+          background-color: transparent;
+          color: gray;  
+        }
+    
 }

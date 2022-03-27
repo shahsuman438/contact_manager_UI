@@ -1,8 +1,8 @@
 .datatable{
-    height: 600px;
+    height: 650px;
     padding: 20px;
-    
     font-weight: bold;
+
     .datatableTitle{
         width: 100%;
         font-size: 24px;
@@ -28,10 +28,11 @@
             }
         }
     }
+    
     .cellWithImg{
         display: flex;
         align-items: center;
-        
+        padding: 20px;
         font-weight: bold;
 
         .cellImg{

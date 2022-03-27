@@ -59,11 +59,12 @@
         display: flex;
         margin: 10px;
         align-items: center;
+      
         .colorOption{
             width: 20px;
             height: 20px;
             border-radius: 5px;
-            border: 1px solid #7451f8;
+            border: 1px solid #231f316b;
             cursor: pointer;
             margin: 5px;
 
@@ -71,7 +72,7 @@
                 background-color: whitesmoke;
             }
             &:nth-child(2){
-                background-color: darkblue;
+                background-color: gray;
             }
             &:nth-child(3){
                 background-color: gray;
