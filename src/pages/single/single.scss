@@ -30,18 +30,23 @@
                .item{
                     display: flex;
                     gap: 20px;
-
+                    flex-direction: column;
+                    align-items: center;
                    .itemImg{
-                       width: 150px;
-                       height: 150px;
+                       width: 180px;
+                       height: 180px;
                        border-radius: 50%;
                         object-fit: cover;
                    }
 
                    .details{
+                       
+
                         .itemTitle{
                             margin-bottom: 10px;
                             color: #555;
+                            
+                            
                         }
                         .detailItem{
                             margin-bottom: 10px;
