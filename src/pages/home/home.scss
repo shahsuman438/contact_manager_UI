@@ -9,6 +9,7 @@
         }
         .charts{
             padding: 5px 20px;
+            
         }
         .listContainer{
             padding: 20px;
@@ -24,3 +25,10 @@
         } 
     }
 }
+
+
+@media screen and (max-width: 992px) {
+    .charts {
+      flex-direction: column;
+    }
+  }
