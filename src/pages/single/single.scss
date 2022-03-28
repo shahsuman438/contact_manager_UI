@@ -11,6 +11,7 @@
 
            .left{
                flex: 1;
+           
                -webkit-box-shadow:2px 4px 10px 1px rgb(0,0,0,0.47);
                box-shadow:2px 4px 10px 1px rgba(107, 104, 104, 0.47);
                padding: 20px;
@@ -64,7 +65,8 @@
                }
            }
            .right{
-               flex:2;
+                flex:2;
+                width: auto;
                
            }
        }
