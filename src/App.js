@@ -10,7 +10,7 @@ import "./style/dark.scss"
 import { useContext, useState } from "react";
 import { darkmodeContext } from "./context/darkmodeContext";
 import Register from "./pages/register/Register";
-
+import Auth from "./components/auth/Auth";
 function App() {
   // const [dark,setDark]=useState(false)
 
@@ -25,8 +25,7 @@ function App() {
       <Routes>
         <Route path="/">
           <Route index element={<Home/>}/>
-          <Route path="auth/login" element={<Login/>}/>
-          <Route path="auth/register" element={<Register/>}/>
+          <Route path="auth" element={<Auth/>}/>
           <Route path="profile" element={<Single/>}></Route>
           <Route path="contacts">
             <Route index element={<List/>}></Route>
