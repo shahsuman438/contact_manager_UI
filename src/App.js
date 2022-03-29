@@ -1,5 +1,5 @@
-import { Home } from "./pages/home/Home";
 
+import { Home } from "./pages/home/Home";
 import {BrowserRouter,Routes,Route} from "react-router-dom"
 import { Login } from "./pages/login/Login";
 import { List } from "./pages/list/List";
@@ -9,8 +9,10 @@ import { New } from "./pages/new/New";
 import "./style/dark.scss"
 import { useContext, useState } from "react";
 import { darkmodeContext } from "./context/darkmodeContext";
-import Register from "./pages/register/Register";
+
 import Auth from "./components/auth/Auth";
+import Protected from "./components/auth/protected/Protected";
+
 function App() {
   // const [dark,setDark]=useState(false)
 
