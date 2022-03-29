@@ -3,17 +3,10 @@ import registerImg from '../../static/loginImg/register2.svg'
 
 import './register.scss'
 
-export class Register extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-        
-      }
-    }
-  render() {
-    return (
-        <div className='register'>
+
+function Register() {
+  return (
+    <div className='register'>
         <div className="header">
           Register
         </div>
@@ -44,8 +37,7 @@ export class Register extends Component {
         </div>
         </div>
       </div>
-    )
-  }
+  )
 }
 
 export default Register
