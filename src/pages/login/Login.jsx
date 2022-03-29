@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './login.scss';
 import image from '../../static/loginImg/login.svg'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const initialState={
   email:'',
@@ -9,6 +10,7 @@ const initialState={
 }
 
 function Login() {
+  const navigate=useNavigate()
   const [userId,setUserId]=useState(initialState)
   const [msg,setMsg]=useState('')
   const submitHandler=(event)=>{
@@ -17,8 +19,8 @@ function Login() {
       .then(res=>{
         console.log(res.data.token)
         localStorage.setItem("auth",res.data.token)
-        
         setMsg('')
+        navigate("/")
       }).catch(error=>{
         console.log("Error##:-",error.response.data.msg)
         setMsg(error.response.data.msg)

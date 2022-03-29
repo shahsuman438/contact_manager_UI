@@ -12,6 +12,7 @@ import { darkmodeContext } from "./context/darkmodeContext";
 
 import Auth from "./components/auth/Auth";
 import Protected from "./components/auth/protected/Protected";
+import PageNotFound from "./components/pagenotfound/PageNotFound";
 
 function App() {
   // const [dark,setDark]=useState(false)
@@ -25,19 +26,20 @@ function App() {
     <div className={darkMode?"app dark":"App"}>
       <BrowserRouter>
       <Routes>
-        <Route path="/">
-          <Route index element={<Home/>}/>
+        <Route path="/">,
+          <Route index element={<Protected cmp={Home}/>}/>
           <Route path="auth" element={<Auth/>}/>
-          <Route path="profile" element={<Single/>}></Route>
+          <Route path="profile" element={<Protected cmp={Single}/>}></Route>
           <Route path="contacts">
-            <Route index element={<List/>}></Route>
-            <Route path="new" element={<New/>}></Route>
+            <Route index element={<Protected cmp={List}/>}></Route>
+            <Route path="new" element={<Protected cmp={New}/>}></Route>
           </Route>
-          <Route path="product">
+          {/* <Route path="product">
             <Route index element={<List/>}></Route>
             <Route path=":productId" element={<Single/>}></Route>
             <Route path="new" element={<New/>}></Route>
-          </Route>
+          </Route> */}
+          <Route path="*" element={<PageNotFound/>}/>
         </Route>
       </Routes>
       </BrowserRouter>
