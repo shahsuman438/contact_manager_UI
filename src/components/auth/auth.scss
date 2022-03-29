@@ -24,23 +24,17 @@
                 color: white;
                 border-radius: 7px;
                 // background-color: #06461ff1;
-                cursor: pointer;
-                &:hover{
-                    background-color: #06461fb4;
-                    
-                }
+                
+                
             }
         }
         .loggedin{
                 .loginbtn{
                     background-color: #06461ff1;
-                    &:hover{
-                        background-color: #06461fb4;
-                        
-                    }
                 }
                 .registerbtn {
                     background-color: #06461fb4;
+                    cursor: pointer;
                     &:hover{
                         background-color: #06461ff1 ;
                         
@@ -50,13 +44,10 @@
         .registerin{
             .registerbtn{
                 background-color: #06461ff1;
-                &:hover{
-                    background-color: #06461fb4;
-                    
-                }
             }
             .loginbtn{
                 background-color: #06461fb4;
+                cursor: pointer;
                 &:hover{
                     background-color: #06461ff1 ;
                     
