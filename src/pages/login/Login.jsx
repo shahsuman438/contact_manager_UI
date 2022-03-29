@@ -3,6 +3,7 @@ import './login.scss';
 import image from '../../static/loginImg/login.svg'
 
 function Login() {
+  
   return (
     <div className='login'>
         <div className="header">
