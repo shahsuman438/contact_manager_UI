@@ -1,17 +1,10 @@
 import React, { Component } from 'react';
 import './login.scss';
 import image from '../../static/loginImg/login.svg'
-export class Login extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       email:''
-    }
-  }
-  render() {
-    return (
-      <div className='login'>
+
+function Login() {
+  return (
+    <div className='login'>
         <div className="header">
           Login
         </div>
@@ -34,8 +27,7 @@ export class Login extends Component {
           </div>
         </div>
       </div>
-    )
-  }
+  )
 }
 
 export default Login
