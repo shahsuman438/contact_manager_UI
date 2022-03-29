@@ -3,6 +3,7 @@
     // border: 1px solid red;
     margin: 10px;
     justify-content: center;
+   
     .container{
         display: inline-block;
         padding: 10px;
@@ -13,20 +14,58 @@
             height: 50px;
             display: flex;
             justify-content: space-between;
-            border-bottom: 2px solid #09632b70;
+            border-bottom: 3px solid #06461ff1;
+            border-radius: 7px;
 
             button{
                 border: none;
-                width: 120px;
+                width: 110px;
                 font-weight: bold;
                 color: white;
                 border-radius: 7px;
-                background-color: #23137aee;
+                // background-color: #06461ff1;
+                cursor: pointer;
                 &:hover{
-                    background-color: #06461ff1;
+                    background-color: #06461fb4;
+                    
                 }
             }
         }
+        .loggedin{
+                .loginbtn{
+                    background-color: #06461ff1;
+                    &:hover{
+                        background-color: #06461fb4;
+                        
+                    }
+                }
+                .registerbtn {
+                    background-color: #06461fb4;
+                    &:hover{
+                        background-color: #06461ff1 ;
+                        
+                    }
+                }
+        }
+        .registerin{
+            .registerbtn{
+                background-color: #06461ff1;
+                &:hover{
+                    background-color: #06461fb4;
+                    
+                }
+            }
+            .loginbtn{
+                background-color: #06461fb4;
+                &:hover{
+                    background-color: #06461ff1 ;
+                    
+                }
+            }
+    }
+        
+
     }
 
 }
+

@@ -10,7 +10,7 @@ function Auth() {
   return (
     <div className="auth">
         <div className="container">
-            <div className="nav">
+            <div className={islogin?"nav loggedin":"nav registerin"}>
                 <button className='loginbtn' onClick={()=>setIsLogIn(true)}>Login</button>
                 <button className='registerbtn' onClick={()=>setIsLogIn(false)}>Register</button>
             </div>
