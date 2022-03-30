@@ -17,7 +17,7 @@ const Datatable = () => {
   const [data,setData]=useState(userRows)
 
   const deleteHandler=(id)=>{
-      setData(data.filter(item=>item.id!=id))
+      setData(data.filter(item=>item.id!==id))
   }
 
 

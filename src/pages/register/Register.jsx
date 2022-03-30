@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import registerImg from '../../static/loginImg/register2.svg'
 
 import './register.scss'

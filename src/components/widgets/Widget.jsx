@@ -40,6 +40,8 @@ const Widget = ({type}) => {
           icon:<BalanceIcon className="icon" style={{color:"blue",backgroundColor:"rgb(0,0,255,0.2)"}}/>
         }
         break;
+    default:
+      
   }
   return (
     <div className="widget">
