@@ -23,13 +23,12 @@ const NavBar = () => {
   useEffect(() => {
     authaxios.get('auth/user')
     .then( result=>{
-       console.log(result.data)
        setUser(result.data)
     })
     .catch(error=>{
       console.log(error.response.data)
    })
-   }, [authaxios])
+   },[])
   
   return (
     <div className='navbar'>

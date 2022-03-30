@@ -20,7 +20,7 @@ const rows = [
   createData('Fozn yoghurt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHN1Y2Nlc3N8ZW58MHx8MHx8&w=1000&q=80'),
 ];
 
-function Tables() {
+function Tables(props) {
   return (
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -34,11 +34,11 @@ function Tables() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
+          {props.value.map((row) => (
+            <TableRow key={row._id}>
               <TableCell align="right" className='tablecell'>
                   <div className="cellWrapper">
-                      <img src={row.image} alt="" className="image" />
+                      <img src={row.photo?`http://localhost:4000/${row.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="" className="image" />
                   </div>
               </TableCell>
               <TableCell component="th" scope="row" className='tablecell'>{row.name}</TableCell>

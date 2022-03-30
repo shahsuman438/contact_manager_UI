@@ -12,6 +12,7 @@ import axios from 'axios'
 
 export const Single = () => {
   const [data,setData]=useState([])
+  const [contact,setContact]=useState([])
   const authKey=localStorage.getItem('authorization')
   const authaxios=axios.create({
     baseURL:"http://localhost:4000/",
@@ -22,13 +23,21 @@ export const Single = () => {
   useEffect(() => {
     authaxios.get('auth/user')
     .then( result=>{
-       console.log(result.data)
        setData(result.data)
     })
     .catch(error=>{
       console.log(error.response.data)
    })
-   }, [])
+
+   authaxios.get('contact')
+    .then( result=>{
+       setContact(result.data)
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+  
+   },[])
 
 
 
@@ -73,7 +82,7 @@ export const Single = () => {
         </div>
         <div className="bottom">
           <h1 className="title">Favourite Contacts</h1>
-          <Table></Table>
+          <Table value={contact}></Table>
         </div>
       </div>
     </div>

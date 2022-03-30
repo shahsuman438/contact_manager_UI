@@ -6,17 +6,50 @@ import SideBar from '../../components/sidebar/SideBar'
 import Widget from '../../components/widgets/Widget'
 import Tables from '../../components/table/Table'
 import "./home.scss"
+import axios from 'axios'
+import { useState,useEffect } from 'react'
+
+
 export const Home = () => {
+  const [contact,setContact]=useState([])
+  const [contactCount,setContactCount]=useState(0)
+  const [userCount,setUserCount]=useState(0)
+  const authKey=localStorage.getItem('authorization')
+
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+  })
+  useEffect(() => {
+   authaxios.get('contact')
+    .then( result=>{
+       setContact(result.data)
+       setContactCount(result.data.length)
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+   authaxios.get('/auth/users')
+    .then( result=>{
+       setUserCount(result.data.length)
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+  
+   },[])
   return (
     <div className='home'>
        <SideBar/>
        <div className="homecontainer">
          <NavBar/>
          <div className="widgets">
-           <Widget type="user"/>
-           <Widget  type="Contacts"/>
-           <Widget  type="order"/>
-           <Widget  type="balance"/>
+           <Widget type="user" count={userCount} />
+           <Widget  type="Contacts" count={contactCount}/>
+           <Widget  type="order" count={200}/>
+           <Widget  type="balance" count={2159}/>
          </div>
          <div className="charts">
            <Featured/>
@@ -26,7 +59,7 @@ export const Home = () => {
            <div className="listTitle">
              Latest Transaction
            </div>
-           <Tables/>
+           <Tables value={contact}/>
          </div>
        </div>
     </div>
