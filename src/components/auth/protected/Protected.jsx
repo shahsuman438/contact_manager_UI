@@ -5,7 +5,7 @@ import {Navigate,useLocation} from 'react-router-dom';
 function Protected(props) {
     const Comp=props.cmp
     const location=useLocation()
-    const auth=localStorage.getItem("auth")
+    const auth=localStorage.getItem("authorization")
     
   return (
     <div>

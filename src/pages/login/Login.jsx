@@ -14,11 +14,9 @@ function Login() {
   const [userId,setUserId]=useState(initialState)
   const [msg,setMsg]=useState('')
   const submitHandler=(event)=>{
-      console.log(JSON.stringify(userId))
       axios.post('http://localhost:4000/auth/login',userId)
       .then(res=>{
-        console.log(res.data.token)
-        localStorage.setItem("auth",res.data.token)
+        localStorage.setItem("authorization",res.data.token)
         setMsg('')
         navigate("/")
       }).catch(error=>{

@@ -1,41 +1,69 @@
-import React from 'react';
+import React, { Component ,useState} from 'react';
 import registerImg from '../../static/loginImg/register2.svg'
+import { useNavigate } from 'react-router-dom';
 
 import './register.scss'
+import axios from 'axios'
 
+const initialState={
+  name:'',
+  email:'',
+  password:''
+}
 
 function Register() {
+  const [register,setRegister]=useState(initialState)
+  const [msg,setMsg]=useState('')
+  const [rePass,setRePass]=useState('')
+  const navigate=useNavigate()
+
+  const submitHandler=(event)=>{
+        if(register.password!==rePass){
+          setMsg("Password not matched")
+        }else{
+          setMsg("")
+          axios.post('http://localhost:4000/auth/register',register)
+          .then(res=>{
+            localStorage.setItem("authorization",res.data.token)
+            navigate("/")
+          }).catch(error=>{
+            setMsg(error.response.data.msg)
+          })
+        }
+        event.preventDefault()
+ }
   return (
     <div className='register'>
         <div className="header">
           Register
         </div>
-        <div className="content">
+        <form className="content" onSubmit={submitHandler}>
           <div className="logo">
             <img src={registerImg} alt="" />
           </div>
         <div className="form">
         <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" name='name' placeholder='Name' />
+            <input type="text" name='name' placeholder='Name' onChange={(e)=>setRegister({...register,name:e.target.value})} />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" name='email' placeholder='Email' />
+            <input type="email" name='email' placeholder='Email' onChange={(e)=>setRegister({...register,email:e.target.value})} />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" name='password' placeholder='Password' />
+            <input type="password" name='password' placeholder='Password' onChange={(e)=>setRegister({...register,password:e.target.value})} />
           </div>
           <div className="form-group">
             <label htmlFor="Repassword">Password</label>
-            <input type="password" name='Repassword' placeholder='Re-type Password' />
+            <input type="password" name='Repassword' placeholder='Re-type Password' onChange={(e)=>setRePass(e.target.value)} />
           </div>
         </div>
+        <p className='errorMsg'>{msg}</p>
         <div className="footer">
-          <button type='button' className="btn">Register</button>
+          <button type='submit' className="btn">Register</button>
         </div>
-        </div>
+        </form>
       </div>
   )
 }
