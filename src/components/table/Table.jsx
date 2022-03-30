@@ -17,7 +17,7 @@ const rows = [
   createData('Frozen yoghrt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://assets.entrepreneur.com/content/3x2/2000/20150820205507-single-man-outdoors-happy-bliss.jpeg'),
   createData('Frozen yghurt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPpL6Hl7NtoaIQksyHLMd9ipglEQsVpwfeWlqmv2pLc0CEarX6w82yExq4_q841u6qpn8&usqp=CAU'),
   createData('Froen yoghurt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://www.allprodad.com/wp-content/uploads/2021/03/05-12-21-happy-people.jpg'),
-  createData('Fozen yoghurt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHN1Y2Nlc3N8ZW58MHx8MHx8&w=1000&q=80'),
+  createData('Fozn yoghurt', 9815213183,'shahsuman438@gmail.com', 'birgunj','https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHN1Y2Nlc3N8ZW58MHx8MHx8&w=1000&q=80'),
 ];
 
 function Tables() {
