@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./navbar.scss"
 import ContentPasteSearchOutlinedIcon from '@mui/icons-material/ContentPasteSearchOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
@@ -6,12 +6,31 @@ import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNone
 
 import { Link } from 'react-router-dom';
 
-
+import axios from 'axios';
 
 
 
 
 const NavBar = () => {
+  const [user,setUser]=useState([])
+  const authKey=localStorage.getItem('authorization')
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+})
+  useEffect(() => {
+    authaxios.get('auth/user')
+    .then( result=>{
+       console.log(result.data)
+       setUser(result.data)
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+   }, [authaxios])
+  
   return (
     <div className='navbar'>
       <div className="wrapper">
@@ -30,7 +49,7 @@ const NavBar = () => {
           </div>
           <Link to="/profile">
           <div className="item">
-            <img src="https://w7.pngwing.com/pngs/980/886/png-transparent-male-portrait-avatar-computer-icons-icon-design-avatar-flat-face-icon-people-head-cartoon-thumbnail.png" alt="avatar" className='avatar'/>
+            <img src={user.photo?`http://localhost:4000/${user.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="avatar" className='avatar'/>
           </div>
           </Link>
           

@@ -44,19 +44,19 @@ function Register() {
         <div className="form">
         <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input type="text" name='name' placeholder='Name' onChange={(e)=>setRegister({...register,name:e.target.value})} />
+            <input type="text" name='name' placeholder='Name' onChange={(e)=>setRegister({...register,name:e.target.value})} required />
           </div>
           <div className="form-group">
             <label htmlFor="email">Email</label>
-            <input type="email" name='email' placeholder='Email' onChange={(e)=>setRegister({...register,email:e.target.value})} />
+            <input type="email" name='email' placeholder='Email' onChange={(e)=>setRegister({...register,email:e.target.value})} required />
           </div>
           <div className="form-group">
             <label htmlFor="password">Password</label>
-            <input type="password" name='password' placeholder='Password' onChange={(e)=>setRegister({...register,password:e.target.value})} />
+            <input type="password" name='password' placeholder='Password' onChange={(e)=>setRegister({...register,password:e.target.value})} required />
           </div>
           <div className="form-group">
             <label htmlFor="Repassword">Password</label>
-            <input type="password" name='Repassword' placeholder='Re-type Password' onChange={(e)=>setRePass(e.target.value)} />
+            <input type="password" name='Repassword' placeholder='Re-type Password' onChange={(e)=>setRePass(e.target.value)} required />
           </div>
         </div>
         <p className='errorMsg'>{msg}</p>

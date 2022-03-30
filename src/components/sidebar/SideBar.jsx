@@ -7,10 +7,15 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
- 
+import { useNavigate } from 'react-router';
 const SideBar = () => {
 
   const {dispatch} =useContext(darkmodeContext)
+  const navigate=useNavigate()
+  const logoutHandler=()=>{
+        localStorage.removeItem("authorization")
+        navigate('/auth')
+  }
     return (
     <div className='sidebar'>
       <div className="top">
@@ -48,7 +53,7 @@ const SideBar = () => {
           </li>
           <p className="title">USER</p>
 
-          <li>
+          <li onClick={logoutHandler}>
           <LogoutOutlinedIcon className='icon'/>
             <span>
               Logout
