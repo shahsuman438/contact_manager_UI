@@ -1,10 +1,37 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import SideBar from '../../components/sidebar/SideBar'
 import NavBar from '../../components/navbar/NavBar'
 import './single.scss'
 import Chart from '../../components/chart/Chart'
 import Table from '../../components/table/Table'
+import axios from 'axios'
+
+
+
+
+
 export const Single = () => {
+  const [data,setData]=useState([])
+  const authKey=localStorage.getItem('authorization')
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+})
+  useEffect(() => {
+    authaxios.get('auth/user')
+    .then( result=>{
+       console.log(result.data)
+       setData(result.data)
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+   }, [])
+
+
+
   return (
     <div className='single'>
       <SideBar />
@@ -15,28 +42,27 @@ export const Single = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmFuZG9tJTIwcGVvcGxlfGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+              <img src={`http://localhost:4000/${data.photo}`}
                 alt="" className="itemImg" />
-
               <div className="details">
                 <h1 className="itemTitle">
-                  jane Doe
+                 {data.name}
                 </h1>
                 <div className="detailItem">
                   <span className='itemKey'>Email:</span>
-                  <span className="itemValue">joe@gmail.com</span>
+                  <span className="itemValue">{data.email}</span>
                 </div>
                 <div className="detailItem">
                   <span className='itemKey'>phone:</span>
-                  <span className="itemValue">+977-9815213183</span>
+                  <span className="itemValue">+977-{data.phone}</span>
                 </div>
                 <div className="detailItem">
                   <span className='itemKey'>Address:</span>
-                  <span className="itemValue">Shreepur 14 Birgunj</span>
+                  <span className="itemValue">{data.address}</span>
                 </div>
                 <div className="detailItem">
                   <span className='itemKey'>Country:</span>
-                  <span className="itemValue">Nepal</span>
+                  <span className="itemValue">{data.country}</span>
                 </div>
               </div>
             </div>
