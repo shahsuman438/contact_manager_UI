@@ -33,6 +33,7 @@ function App() {
           <Route path="contacts">
             <Route index element={<Protected cmp={List}/>}></Route>
             <Route path="new" element={<Protected cmp={New}/>}></Route>
+            <Route path="edit/:id" element={<Protected cmp={New}/>}></Route>
           </Route>
           {/* <Route path="product">
             <Route index element={<List/>}></Route>

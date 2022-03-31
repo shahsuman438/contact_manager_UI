@@ -65,7 +65,9 @@ const Datatable = (props) => {
               <TableCell align="center" className='tablecell'>{row.email}</TableCell>
               <TableCell align="center" className='tablecell'>{row.address}</TableCell>
               <TableCell align="center" className='tablecell action'>
-                <button className='editButton'><EditIcon/></button>
+              <Link to={{pathname:`edit/${row._id}`}} className='link' style={{textDecoration:"none"}} value={"value from data table"}>
+                    <button className='editButton' ><EditIcon/></button>
+              </Link>
                 <button className='deleteButton' onClick={()=>deleteHandler(row._id)} ><DeleteIcon/></button>
               </TableCell>
             </TableRow>
