@@ -6,10 +6,6 @@ import Chart from '../../components/chart/Chart'
 import Table from '../../components/table/Table'
 import axios from 'axios'
 
-
-
-
-
 export const Single = () => {
   const [data,setData]=useState([])
   const [contact,setContact]=useState([])
@@ -37,7 +33,7 @@ export const Single = () => {
       console.log(error.response.data)
    })
   
-   },[])
+   })
 
 
 
