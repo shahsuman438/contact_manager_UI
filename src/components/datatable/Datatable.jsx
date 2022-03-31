@@ -11,9 +11,26 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import axios from 'axios'
 
 const Datatable = (props) => {
+  const authKey=localStorage.getItem('authorization')
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+  })
+  const deleteHandler=(e)=>{
+    console.log(e)
+    authaxios.delete(`contact/${e}`)
+    .then( result=>{
+       alert(result.data.msg)
+    })
+    .catch(error=>{
+      alert(error.response.data)
+   })
+  }
   return (
     <div className='datatable' >
     <div className="datatableTitle">
@@ -49,7 +66,7 @@ const Datatable = (props) => {
               <TableCell align="center" className='tablecell'>{row.address}</TableCell>
               <TableCell align="center" className='tablecell action'>
                 <button className='editButton'><EditIcon/></button>
-                <button className='deleteButton'><DeleteIcon/></button>
+                <button className='deleteButton' onClick={()=>deleteHandler(row._id)} ><DeleteIcon/></button>
               </TableCell>
             </TableRow>
           ))}
