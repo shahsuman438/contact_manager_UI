@@ -4,31 +4,57 @@ import NavBar from '../../components/navbar/NavBar'
 import './new.scss'
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Checkbox from '@mui/material/Checkbox';
-
+import axios from 'axios';
 const initialState={
   name:'',
   email:'',
   number:'',
-  fav:'',
+  fav:'false',
   address:'',
-  photo:''
+  photo:[],
 
 }
 
 export const New = () => {
   const [file,setFile]=useState("")
   const [addData,setAddData]=useState(initialState)
-  console.log()
-  
+  const authKey=localStorage.getItem('authorization')
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+})
+
   const filehandler=(e)=>{
     setFile(
      e.target.files[0]
     )
     setAddData({...addData,photo:e.target.files[0]})
+   
+    
   }
+
   const submitHandler=(event)=>{
-    console.log(addData)
-    event.preventDefault()
+   try {
+    const formData= new FormData()
+    formData.append('photo',addData.photo)
+    formData.append('name',addData.name)
+    formData.append('email',addData.email)
+    formData.append('number',addData.number)
+    formData.append('fav',addData.fav)
+    formData.append('address',addData.address)
+    authaxios.post('contact',formData)
+      .then( result=>{
+        alert(JSON.stringify(result.data))
+      })
+      .catch(error=>{
+      alert(error.response.data)
+    })
+   } catch (error) {
+      console.log(error)
+   }
+   event.preventDefault()
   }
  
   return (
@@ -50,28 +76,28 @@ export const New = () => {
              <form onSubmit={submitHandler}>
                 <div className="formInput">
                  <label htmlFor='file'>Image:<DriveFolderUploadIcon className='icon'/></label>
-                 <input type="file" id='file' onChange={filehandler} style={{display:"none"}} />
+                 <input type="file" id='file' onChange={filehandler} name="photo" style={{display:"none"}} />
                </div>
                <div className="formInput">
                  <label >Favourite</label>
-                 <Checkbox onChange={(e)=>setAddData({...addData,fav:e.target.checked})}  color="primary" />
+                 <Checkbox onChange={(e)=>setAddData({...addData,fav:e.target.checked})} name="fav" color="primary" />
                </div>
                <div className="formInput">
                  <label >Name</label>
-                 <input type="text" placeholder='name' onChange={(e)=>setAddData({...addData,name:e.target.value})} value={addData.name} />
+                 <input type="text" placeholder='Name' required onChange={(e)=>setAddData({...addData,name:e.target.value})} name="name" value={addData.name} />
                </div>
                <div className="formInput">
                  <label >Email</label>
-                 <input type="email" placeholder='Email' onChange={(e)=>setAddData({...addData,email:e.target.value})} value={addData.email} />
+                 <input type="email" placeholder='Email' required onChange={(e)=>setAddData({...addData,email:e.target.value})} name="email" value={addData.email} />
                </div>
                <div className="formInput">
                  <label >Contact number</label>
-                 <input type="number" placeholder='Phone  Number'  onChange={(e)=>setAddData({...addData,number:e.target.value})} value={addData.number} />
+                 <input type="number" placeholder='Phone  Number' required  onChange={(e)=>setAddData({...addData,number:e.target.value})} name="number" value={addData.number} />
                </div>
                
                <div className="formInput">
                  <label >Address</label>
-                 <input type="text" placeholder='Address' onChange={(e)=>setAddData({...addData,address:e.target.value})}  value={addData.address} />
+                 <input type="text" placeholder='Address' required onChange={(e)=>setAddData({...addData,address:e.target.value})} name="address" value={addData.address} />
                </div>
                 <button type='submit'>Save</button>
              </form>
