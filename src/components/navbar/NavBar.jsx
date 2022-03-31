@@ -34,8 +34,8 @@ const NavBar = () => {
     <div className='navbar'>
       <div className="wrapper">
         <div className="search">
-          <input type="text" placeholder='search' />
-          <ContentPasteSearchOutlinedIcon className='icon'/>
+          {/* <input type="text" placeholder='search' />
+          <ContentPasteSearchOutlinedIcon className='icon'/> */}
         </div>
         <div className="items">
           <div className="item">
