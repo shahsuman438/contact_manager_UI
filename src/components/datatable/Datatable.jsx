@@ -18,7 +18,7 @@ const Datatable = (props) => {
     <div className='datatable' >
     <div className="datatableTitle">
         Contact List
-        <Link to="/contacts/new" className='link' style={{textDecoration:"none"}}>
+        <Link to="/contacts/new" className='link' style={{textDecoration:"none"}} value={"value from data table"}>
           <AddIcon className='add'/>
         </Link>
     </div>
