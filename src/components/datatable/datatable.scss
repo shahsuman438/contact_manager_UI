@@ -12,56 +12,68 @@
         align-items: center;
         justify-content: space-between;
         .link{
+            margin-right: 6.5%;
             display: flex;
-            width: 100px;
+            width: 50px;
+            height: 50px;
             justify-content: center;
-            text-decoration: none;
-            color: green;
-            font-size: 16px;
+            color: white;
             font-weight: bold;
-            border: 1px solid rgba(0, 128, 0, 0.705);
-            padding: 5px;
-            border-radius: 5px;
+            background-color: rgba(20, 87, 20, 0.89);
+            // padding: 5px;
+            border-radius: 50%;
             &:hover{
-                background-color: rgba(0, 128, 0, 0.274);
+                background-color: rgba(20, 87, 20, 0.747);
+                color: white;
+            }
+            .add{
                 
+                width: 100%;
+                height: 100%;
             }
         }
     }
-    
-    .cellWithImg{
-        display: flex;
-        align-items: center;
-        padding: 20px;
-        font-weight: bold;
-
-        .cellImg{
+    .table{
+   
+        .cellWrapper{
+            display: flex;
+            align-items: center;
+            .image{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin-right: 10px;
+                object-fit: cover;
+            }
+        }
+        .editButton,.deleteButton{
             width: 50px;
+            margin-left: 6px;
             height: 50px;
             border-radius: 50%;
-            object-fit: cover;
-            margin-right: 20px;
-            
-        }
-    }
-    .cellAction{
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        .viewButton{
-            padding: 2px 5px;
-            border-radius: 5px;
-            color: darkblue;
-            border: 1px solid rgba(0, 0, 139, 0.315);
             cursor: pointer;
+            border: none;
+        }
+        .editButton{
+            background-color: rgba(48, 64, 155, 0.89);
+            color: white;
+            font-weight: bold;
+            &:hover{
+                background-color: rgba(48, 64, 155, 0.747);
+            }
         }
         .deleteButton{
-            padding: 2px 5px;
-            border-radius: 5px;
-            color: crimson;
-            border: 1px solid rgba(255, 0, 0, 0.404);
-            cursor: pointer;
+            background-color: rgba(197, 22, 22, 0.89);
+            color: white;
+            font-weight: bold;
+            &:hover{
+                background-color: rgba(197, 22, 22, 0.747);
+            }
         }
+        
+            
+        
     }
+    
+    
 }
