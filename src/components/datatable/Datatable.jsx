@@ -16,7 +16,6 @@ import Paper from '@mui/material/Paper';
 const Datatable = (props) => {
   return (
     <div className='datatable' >
-
     <div className="datatableTitle">
         Contact List
         <Link to="/contacts/new" className='link' style={{textDecoration:"none"}}>
@@ -41,6 +40,7 @@ const Datatable = (props) => {
               <TableCell align="right" className='tablecell'>
                   <div className="cellWrapper">
                       <img src={row.photo?`http://localhost:4000/${row.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="" className="image" />
+                      {row.fav?<div className="fav"></div>:null}
                   </div>
               </TableCell>
               <TableCell component="th" scope="row" className='tablecell'>{row.name}</TableCell>

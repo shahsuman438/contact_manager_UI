@@ -38,12 +38,27 @@
         .cellWrapper{
             display: flex;
             align-items: center;
+            position: relative;
+            flex-direction: row;
             .image{
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
                 margin-right: 10px;
                 object-fit: cover;
+            }
+            .fav{
+                    width: 15px;
+                    height: 15px;
+                    background-color: rgb(22, 196, 100);
+                    border-radius: 50%;
+                    color: white;
+                    display: flex;
+                    justify-content: center;
+                    font-size: 10px;
+                    font-weight: bold;
+                    position: absolute;
+                    top: 0;
             }
         }
         .editButton,.deleteButton{
