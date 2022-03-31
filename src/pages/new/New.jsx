@@ -23,6 +23,7 @@ export const New = () => {
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
   const [imageLink, setImageLink] = useState('')
+  const [button,setButton]=useState('')
   const authKey = localStorage.getItem('authorization')
   
   var baseURL = 'http://localhost:4000/'
@@ -35,6 +36,7 @@ export const New = () => {
   })
   useEffect(() => {
     if (id) {
+      setButton("Update")
       setTitle("View Contact")
       authaxios.get(`contact/${id}`)
         .then(result => {
@@ -45,6 +47,7 @@ export const New = () => {
           alert(error.response.data)
         })
     } else {
+      setButton("Create")
       setImageLink(domeImage)
       setTitle("Add New Contact")
     }
@@ -134,7 +137,7 @@ export const New = () => {
                 <label >Address</label>
                 <input type="text" placeholder='Address' required onChange={(e) => setAddData({ ...addData, address: e.target.value })} name="address" value={addData.address} />
               </div>
-              <button type='submit'>Save</button>
+              <button type='submit'>{button}</button>
             </form>
           </div>
         </div>
