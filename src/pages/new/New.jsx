@@ -110,7 +110,7 @@ export const New = () => {
           <div className="left">
             <img src={imageLink} alt="img" />
           </div>
-          <div className="right">
+          <div className="right formInputdiv">
             <form onSubmit={submitHandler}>
               <div className="formInput">
                 <label htmlFor='file'>Image:<DriveFolderUploadIcon className='icon' /></label>

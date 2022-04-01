@@ -38,7 +38,7 @@ export const Home = () => {
     .catch(error=>{
       console.log(error.response.data)
    })
-   })
+   },[])
   return (
     <div className='home'>
        <SideBar/>

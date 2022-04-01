@@ -11,12 +11,11 @@
 
            .left{
                flex: 1;
-           
                -webkit-box-shadow:2px 4px 10px 1px rgb(0,0,0,0.47);
                box-shadow:2px 4px 10px 1px rgba(107, 104, 104, 0.47);
                padding: 20px;
                position: relative;
-
+               border-radius: 0px 5px 0 0 ;
                 .editButton{
                     position:absolute;
                     top: 0;
@@ -27,6 +26,7 @@
                     font-weight: bold;
                     background-color: hsla(253, 92%, 65%, 0.356);
                     border-radius: 0px 5px 0 0 ;
+                    cursor: pointer;
                 }
                .item{
                     display: flex;

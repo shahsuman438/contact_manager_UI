@@ -33,7 +33,7 @@ export const Single = () => {
       console.log(error.response.data)
    })
   
-   })
+   },[])
 
 
 

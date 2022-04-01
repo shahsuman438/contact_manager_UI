@@ -1,13 +1,10 @@
 .auth{
     display: flex;
-    // border: 1px solid red;
-    margin: 10px;
+    padding: 30px;
     justify-content: center;
-   
     .container{
         display: inline-block;
         padding: 10px;
-        // border: 1px solid yellow;
         box-shadow: 0px 0px 12px 0.8px #09632b70;
         .nav{
             width: 100%;
@@ -23,9 +20,6 @@
                 font-weight: bold;
                 color: white;
                 border-radius: 7px;
-                // background-color: #06461ff1;
-                
-                
             }
         }
         .loggedin{

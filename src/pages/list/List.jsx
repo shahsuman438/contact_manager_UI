@@ -23,7 +23,7 @@ export const List = () => {
       console.log(error.response.data)
    })
   
-   })
+   },[])
   return (
     <div className='list'>
       <Sidebar/>
