@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import SideBar from '../../components/sidebar/SideBar'
 import NavBar from '../../components/navbar/NavBar'
 import './single.scss'
@@ -11,39 +11,39 @@ import EditProfile from './profile/editprofile/EditProfile'
 
 
 export const Single = () => {
-  const [data,setData]=useState([])
-  const [contact,setContact]=useState([])
-  const authKey=localStorage.getItem('authorization')
-  const [openPopup,setOpenPopup]=useState(false)
+  const [data, setData] = useState([])
+  const [contact, setContact] = useState([])
+  const authKey = localStorage.getItem('authorization')
+  const [openPopup, setOpenPopup] = useState(false)
 
-  const authaxios=axios.create({
-    baseURL:"http://localhost:4000/",
-    headers:{
-        Authorization:`Bearer ${authKey}`
+  const authaxios = axios.create({
+    baseURL: "http://localhost:4000/",
+    headers: {
+      Authorization: `Bearer ${authKey}`
     }
-})
+  })
   useEffect(() => {
     authaxios.get('auth/user')
-    .then( result=>{
-       setData(result.data)
-    })
-    .catch(error=>{
-      console.log(error.response.data)
-   })
+      .then(result => {
+        setData(result.data)
+      })
+      .catch(error => {
+        console.log(error.response.data)
+      })
 
-   authaxios.get('contact')
-    .then( result=>{
-       setContact(result.data.filter(item=>item.fav===true))
-    })
-    .catch(error=>{
-      console.log(error.response.data)
-   })
-  
-   },[])
+    authaxios.get('contact')
+      .then(result => {
+        setContact(result.data.filter(item => item.fav === true))
+      })
+      .catch(error => {
+        console.log(error.response.data)
+      })
 
-   const editHandler=()=>{
-     setOpenPopup(true)
-   }
+  }, [])
+
+  const editHandler = () => {
+    setOpenPopup(true)
+  }
 
 
 
@@ -57,11 +57,11 @@ export const Single = () => {
             <div className="editButton" onClick={editHandler}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img src={data.photo?`http://localhost:4000/${data.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
+              <img src={data.photo ? `http://localhost:4000/${data.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
                 alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">
-                 {data.name}
+                  {data.name}
                 </h1>
                 <div className="detailItem">
                   <span className='itemKey'>Email:</span>
@@ -96,7 +96,7 @@ export const Single = () => {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <EditProfile value={data}/>
+        <EditProfile value={data} />
       </Popup>
     </div>
   )
