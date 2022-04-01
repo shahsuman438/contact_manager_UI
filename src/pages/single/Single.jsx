@@ -27,7 +27,7 @@ export const Single = () => {
 
    authaxios.get('contact')
     .then( result=>{
-       setContact(result.data)
+       setContact(result.data.filter(item=>item.fav===true))
     })
     .catch(error=>{
       console.log(error.response.data)
