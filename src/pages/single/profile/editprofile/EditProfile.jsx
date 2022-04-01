@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react'
 import './editprofile.scss'
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import axios from 'axios';
-import { Navigate } from 'react-router';
+
+
 function EditProfile(props) {
     const [addData, setAddData] = useState(props.value)
     const [file, setFile] = useState('')
@@ -45,7 +46,6 @@ function EditProfile(props) {
             authaxios.put(`auth/user/profile`, formData)
                 .then(result => {
                     alert(JSON.stringify(result.data))
-                    Navigate("/profile")
 
                 })
                 .catch(error => {
