@@ -23,9 +23,8 @@ export const New = () => {
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
   const [imageLink, setImageLink] = useState('')
-  const [button,setButton]=useState('')
+  const [button,setButton] = useState('')
   const authKey = localStorage.getItem('authorization')
-  
   var baseURL = 'http://localhost:4000/'
   var domeImage = 'https://th.bing.com/th/id/R.f0e484c12aa57292f9bd688eb98b3085?rik=oKU4f%2f1KkSEdQg&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_511291.png&ehk=oFB4ZUkeplC7aajp5sRH1Q60BiZoT%2fAchk%2bbAHjN534%3d&risl=&pid=ImgRaw&r=0'
   const authaxios = axios.create({
