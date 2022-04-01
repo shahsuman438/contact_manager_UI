@@ -12,13 +12,13 @@ function Popup(props) {
         <Dialog open={openPopup} maxWidth="md">
             <DialogTitle>
                 <div className='Title'>
-                    <p>Edit Profile</p>
+                    <p>{title}</p>
                     <button onClick={closeHandler}><CloseIcon className='icon'/></button>
                 </div>
             </DialogTitle>
             <DialogContent dividers>
                 <div>
-                    {children}
+                   {children}
                 </div>
             </DialogContent>
         </Dialog>

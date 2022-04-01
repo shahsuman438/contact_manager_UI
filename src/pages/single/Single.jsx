@@ -6,7 +6,6 @@ import Chart from '../../components/chart/Chart'
 import Table from '../../components/table/Table'
 import axios from 'axios'
 import Popup from '../../components/popup/Popup'
-
 import EditProfile from './profile/editprofile/EditProfile'
 
 
@@ -93,6 +92,7 @@ export const Single = () => {
         </div>
       </div>
       <Popup
+        title="Edit Profile"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >

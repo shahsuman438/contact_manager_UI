@@ -2,9 +2,13 @@ import React, { useState, useEffect } from 'react'
 import './editprofile.scss'
 import FileUploadIcon from '@mui/icons-material/FileUpload';
 import axios from 'axios';
+import Popup from '../../../../components/popup/Popup'
+import ResetPassword from '../resetPassword/ResetPassword';
+
 
 
 function EditProfile(props) {
+    const [openPopup, setOpenPopup] = useState(false)
     const [addData, setAddData] = useState(props.value)
     const [file, setFile] = useState('')
     const [imageLink, setImageLink] = useState('')
@@ -57,6 +61,9 @@ function EditProfile(props) {
 
         }
     }
+    const editHandler=()=>{
+        setOpenPopup(true)
+      }
     return (
         <div className='editProfile'>
             <form className="container" onSubmit={submitHandler}>
@@ -94,11 +101,18 @@ function EditProfile(props) {
                         <div className="action">
                             <button type='submit' className='updatebtn'>Update</button>
                             {/* <button type='button' >Reset</button> */}
-                            <button type='button' >Reset Password</button>
+                            <button type='button' onClick={editHandler} >Change Password</button>
                         </div>
                     </div>
                 </div>
             </form>
+            <Popup
+                title="Change password"
+                openPopup={openPopup}
+                setOpenPopup={setOpenPopup}
+            >
+                <ResetPassword/>
+            </Popup>
         </div>
     )
 }
