@@ -29,7 +29,7 @@ export const List = () => {
       <Sidebar/>
       <div className="listContainer">
           <Navbar/>
-          <Datatable value={data}/>
+          <Datatable value={data.slice(0).reverse()}/>
       </div>
     </div>
   )
