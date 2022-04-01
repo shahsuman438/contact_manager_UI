@@ -48,7 +48,7 @@ const SideBar = () => {
           <li>
           <ContactPageOutlinedIcon className='icon'/>
             <span>
-              product
+                Users
             </span>
           </li>
           <p className="title">USER</p>

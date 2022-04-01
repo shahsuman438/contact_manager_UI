@@ -61,7 +61,7 @@ const Datatable = (props) => {
                   </div>
               </TableCell>
               <TableCell component="th" scope="row" className='tablecell'>{row.name}</TableCell>
-              <TableCell align="center" className='tablecell'>{row.number}</TableCell>
+              <TableCell align="center" className='tablecell'>+977-{row.number}</TableCell>
               <TableCell align="center" className='tablecell'>{row.email}</TableCell>
               <TableCell align="center" className='tablecell'>{row.address}</TableCell>
               <TableCell align="center" className='tablecell action'>
