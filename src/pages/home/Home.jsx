@@ -47,8 +47,8 @@ export const Home = () => {
          <div className="widgets">
            <Widget type="user" count={userCount} />
            <Widget  type="Contacts" count={contactCount}/>
-           <Widget  type="order" count={200}/>
-           <Widget  type="balance" count={2159}/>
+           {/* <Widget  type="order" count={200}/>
+           <Widget  type="balance" count={2159}/> */}
          </div>
          <div className="charts">
            <Featured/>
@@ -56,9 +56,9 @@ export const Home = () => {
          </div>
          <div className="listContainer">
            <div className="listTitle">
-             Latest Transaction
+             Latest 5 Transaction
            </div>
-           <Tables value={contact}/>
+           <Tables value={contact.slice(-5).reverse()}/>
          </div>
        </div>
     </div>
