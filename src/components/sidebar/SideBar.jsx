@@ -8,6 +8,7 @@ import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
+import GroupIcon from '@mui/icons-material/Group';
 const SideBar = () => {
 
   const {dispatch} =useContext(darkmodeContext)
@@ -39,7 +40,7 @@ const SideBar = () => {
           <p className="title">LIST</p>
           <Link to="/contacts" style={{textDecoration:"none"}}>
             <li>
-            <PersonOutlineOutlinedIcon className='icon'/>
+            <GroupIcon className='icon'/>
               <span>
                 Contacts
               </span>
@@ -52,7 +53,14 @@ const SideBar = () => {
             </span>
           </li>
           <p className="title">USER</p>
-
+          <Link to="/profile" style={{textDecoration:"none"}}>
+            <li>
+            <PersonOutlineOutlinedIcon className='icon'/>
+              <span>
+                Profile
+              </span>
+            </li>
+          </Link>
           <li onClick={logoutHandler}>
           <LogoutOutlinedIcon className='icon'/>
             <span>
