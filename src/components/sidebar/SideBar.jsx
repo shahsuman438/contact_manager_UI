@@ -46,12 +46,12 @@ const SideBar = () => {
               </span>
             </li>
           </Link>
-          <li>
+          {/* <li>
           <ContactPageOutlinedIcon className='icon'/>
             <span>
                 Users
             </span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
           <Link to="/profile" style={{textDecoration:"none"}}>
             <li>
