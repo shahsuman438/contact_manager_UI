@@ -4,6 +4,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import {toast } from 'react-toastify';
 
 import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
@@ -16,6 +17,7 @@ const SideBar = () => {
   const logoutHandler=()=>{
         localStorage.removeItem("authorization")
         navigate('/auth')
+        toast.success("Logout Done")
   }
     return (
     <div className='sidebar'>
