@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './datatable.scss'
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,6 +12,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import axios from 'axios'
+import { toast } from 'react-toastify';
 
 const Datatable = (props) => {
   const authKey=localStorage.getItem('authorization')
@@ -22,13 +23,12 @@ const Datatable = (props) => {
     }
   })
   const deleteHandler=(e)=>{
-    console.log(e)
     authaxios.delete(`contact/${e}`)
     .then( result=>{
-       alert(result.data.msg)
+       toast.success(result.data.msg)
     })
     .catch(error=>{
-      alert(error.response.data)
+      toast.error(`${error.response.status} ${error.response.statusText}`)
    })
   }
   return (
