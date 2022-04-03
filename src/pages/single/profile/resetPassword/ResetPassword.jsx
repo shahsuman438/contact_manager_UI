@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './resetpassword.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
-
+import { toast } from 'react-toastify'
 const initialData = {
     lastpqassword: '',
     newpassword: '',
@@ -25,18 +25,22 @@ function ResetPassword() {
             try {
                 authaxios.post('auth/user/reset', resetData)
                     .then(result => {
-                        alert(result.data.msg+" you will be logout")
+                        // alert(result.data.msg + " you will be logout")
                         localStorage.removeItem("authorization")
                         navigate('/auth')
+                        toast.success(result.data.msg)
+
                     })
                     .catch(error => {
                         setMsg(error.response.data.msg)
+                        toast.error(error.response.data.msg)
                     })
             } catch (error) {
                 console.log(error)
             }
         } else {
             setMsg("Confirm Password not Matched")
+            toast.warn("Confirm Password not Matched")
         }
     }
     const resetHandler = () => {
