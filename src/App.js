@@ -14,6 +14,10 @@ import Auth from "./components/auth/Auth";
 import Protected from "./components/auth/protected/Protected";
 import PageNotFound from "./components/pagenotfound/PageNotFound";
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 function App() {
   // const [dark,setDark]=useState(false)
 
@@ -43,6 +47,7 @@ function App() {
           <Route path="*" element={<PageNotFound/>}/>
         </Route>
       </Routes>
+      <ToastContainer/>
       </BrowserRouter>
     </div>
   );

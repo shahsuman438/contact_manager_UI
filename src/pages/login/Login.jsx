@@ -3,6 +3,8 @@ import './login.scss';
 import image from '../../static/loginImg/login.svg'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const initialState={
   email:'',
@@ -18,10 +20,14 @@ function Login() {
       .then(res=>{
         localStorage.setItem("authorization",res.data.token)
         setMsg('')
+        toast.success("Login Success",{
+          position:"top-center"
+        })
         navigate("/")
       }).catch(error=>{
         console.log("Error##:-",error.response.data.msg)
         setMsg(error.response.data.msg)
+        toast.error(error.response.data.msg)
       })
       event.preventDefault()
   }
