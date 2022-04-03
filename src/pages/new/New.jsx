@@ -6,6 +6,7 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Checkbox from '@mui/material/Checkbox';
 import axios from 'axios';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 const initialState = {
   name: '',
   email: '',
@@ -65,6 +66,7 @@ export const New = () => {
   }
 
   const submitHandler = (event) => {
+    event.preventDefault()
     try {
       const formData = new FormData()
       formData.append('photo', addData.photo)
@@ -76,25 +78,26 @@ export const New = () => {
       if (id) {
         authaxios.put(`contact/${id}`, formData)
           .then(result => {
-            alert(JSON.stringify(result.data))
+            toast.success(JSON.stringify(result.data.msg))
           })
           .catch(error => {
-            alert(error.response.data)
+            toast.error(error.response.data)
+
           })
 
       } else {
         authaxios.post('contact', formData)
           .then(result => {
-            alert(JSON.stringify(result.data))
+            toast.success(JSON.stringify(result.data.msg))
           })
           .catch(error => {
-            alert(error.response.data)
+            toast.error(error.response.data)
+
           })
       }
     } catch (error) {
-      alert(error)
+      toast.error(error)
     }
-    event.preventDefault()
   }
 
   return (
