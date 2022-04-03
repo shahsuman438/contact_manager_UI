@@ -4,6 +4,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import axios from 'axios';
 import Popup from '../../../../components/popup/Popup'
 import ResetPassword from '../resetPassword/ResetPassword';
+import {toast } from 'react-toastify';
 
 
 
@@ -49,11 +50,14 @@ function EditProfile(props) {
             formData.append('address', addData.address)
             authaxios.put(`auth/user/profile`, formData)
                 .then(result => {
-                    alert(JSON.stringify(result.data))
-
+                    toast.success(result.data.msg,{
+                        position:'top-center'
+                    })
                 })
                 .catch(error => {
                     alert(error.response.data)
+                    toast.error(error.response.data)
+
                 })
 
         } catch (error) {
