@@ -1,36 +1,23 @@
 import React, { useState, useEffect } from 'react'
 import './editprofile.scss'
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import axios from 'axios';
 import Popup from '../../../../components/popup/Popup'
 import ResetPassword from '../resetPassword/ResetPassword';
 import {toast } from 'react-toastify';
-
+import { authaxios } from '../../../../data/authAxios/AuthApi'
+import { BaseURL } from '../../../../data/authAxios/AuthApi';
 
 
 function EditProfile(props) {
     const [openPopup, setOpenPopup] = useState(false)
     const [addData, setAddData] = useState(props.value)
-    const [file, setFile] = useState('')
     const [imageLink, setImageLink] = useState('')
-    var baseURL = 'http://localhost:4000/'
     var domeImage = 'https://fupping.com/wp-content/uploads/2018/06/Personal.png'
-    const authKey = localStorage.getItem('authorization')
-
-    const authaxios = axios.create({
-        baseURL: baseURL,
-        headers: {
-            Authorization: `Bearer ${authKey}`
-        }
-    })
     useEffect(() => {
-        setImageLink(addData.photo ? baseURL + addData.photo : domeImage)
+        setImageLink(addData.photo ? BaseURL + addData.photo : domeImage)
     }, [])
 
     const filehandler = (e) => {
-        setFile(
-            e.target.files[0]
-        )
         createImageLink(e.target.files[0])
         setAddData({ ...addData, photo: e.target.files[0] })
     }
