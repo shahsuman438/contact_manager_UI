@@ -7,21 +7,21 @@ import Table from '../../components/table/Table'
 import axios from 'axios'
 import Popup from '../../components/popup/Popup'
 import EditProfile from './profile/editprofile/EditProfile'
-
+import { authaxios } from '../../data/authAxios/AuthApi'
 
 
 export const Single = () => {
   const [data, setData] = useState([])
   const [contact, setContact] = useState([])
-  const authKey = localStorage.getItem('authorization')
+  // const authKey = localStorage.getItem('authorization')
   const [openPopup, setOpenPopup] = useState(false)
 
-  const authaxios = axios.create({
-    baseURL: "http://localhost:4000/",
-    headers: {
-      Authorization: `Bearer ${authKey}`
-    }
-  })
+  // const authaxios = axios.create({
+  //   baseURL: "http://localhost:4000/",
+  //   headers: {
+  //     Authorization: `Bearer ${authKey}`
+  //   }
+  // })
   useEffect(() => {
     authaxios.get('auth/user')
       .then(result => {
