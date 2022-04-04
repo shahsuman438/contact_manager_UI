@@ -5,13 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {DarkmodeContextProvider} from './context/darkmodeContext';
 ReactDOM.render(
-  
-
     <DarkmodeContextProvider>
     <App  />
-
     </DarkmodeContextProvider>
-    
   ,
   document.getElementById('root')
 );
