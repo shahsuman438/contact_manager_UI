@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import "./sidebar.scss"
+import React, { useContext,useState,useEffect } from 'react'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
@@ -8,8 +7,9 @@ import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import GroupIcon from '@mui/icons-material/Group';
+import axios from 'axios';
+import "./sidebar.scss"
 const SideBar = () => {
-
   const {dispatch} =useContext(darkmodeContext)
   const navigate=useNavigate()
   const logoutHandler=()=>{
@@ -17,11 +17,29 @@ const SideBar = () => {
         navigate('/auth')
         toast.success("Logout Done")
   }
+  const [user,setUser]=useState([])
+  const authKey=localStorage.getItem('authorization')
+  const authaxios=axios.create({
+    baseURL:"http://localhost:4000/",
+    headers:{
+        Authorization:`Bearer ${authKey}`
+    }
+})
+  useEffect(() => {
+    authaxios.get('auth/user')
+    .then( result=>{
+       setUser(result.data.name.split(' ')[0])
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+   },[])
+  
     return (
     <div className='sidebar'>
       <div className="top">
         <Link to="/" style={{textDecoration:"none"}}>
-        <span className="logo">LeapFrog</span>
+        <span className="logo">Hi! {user}</span>
         </Link>
       </div>
       <hr/>

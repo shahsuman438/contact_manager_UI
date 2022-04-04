@@ -3,9 +3,7 @@ import "./navbar.scss"
 import ContentPasteSearchOutlinedIcon from '@mui/icons-material/ContentPasteSearchOutlined';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
-
 import { Link } from 'react-router-dom';
-
 import axios from 'axios';
 
 
