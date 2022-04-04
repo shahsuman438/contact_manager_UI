@@ -6,22 +6,13 @@ import SideBar from '../../components/sidebar/SideBar'
 import Widget from '../../components/widgets/Widget'
 import Tables from '../../components/table/Table'
 import "./home.scss"
-import axios from 'axios'
 import { useState,useEffect } from 'react'
-
+import { authaxios } from '../../data/authAxios/AuthApi'
 
 export const Home = () => {
   const [contact,setContact]=useState([])
   const [contactCount,setContactCount]=useState(0)
   const [userCount,setUserCount]=useState(0)
-  const authKey=localStorage.getItem('authorization')
-
-  const authaxios=axios.create({
-    baseURL:"http://localhost:4000/",
-    headers:{
-        Authorization:`Bearer ${authKey}`
-    }
-  })
   useEffect(() => {
    authaxios.get('contact')
     .then( result=>{

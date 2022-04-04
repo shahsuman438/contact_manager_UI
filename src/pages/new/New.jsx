@@ -4,9 +4,11 @@ import NavBar from '../../components/navbar/NavBar'
 import './new.scss'
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Checkbox from '@mui/material/Checkbox';
-import axios from 'axios';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
+import { authaxios } from '../../data/authAxios/AuthApi'
+import { BaseURL } from '../../data/authAxios/AuthApi';
+
 const initialState = {
   name: '',
   email: '',
@@ -20,20 +22,11 @@ const initialState = {
 export const New = () => {
 
   const { id } = useParams()
-  const [file, setFile] = useState('')
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
   const [imageLink, setImageLink] = useState('')
   const [button,setButton] = useState('')
-  const authKey = localStorage.getItem('authorization')
-  var baseURL = 'http://localhost:4000/'
-  var domeImage = 'https://th.bing.com/th/id/R.f0e484c12aa57292f9bd688eb98b3085?rik=oKU4f%2f1KkSEdQg&riu=http%3a%2f%2fcdn.onlinewebfonts.com%2fsvg%2fimg_511291.png&ehk=oFB4ZUkeplC7aajp5sRH1Q60BiZoT%2fAchk%2bbAHjN534%3d&risl=&pid=ImgRaw&r=0'
-  const authaxios = axios.create({
-    baseURL: baseURL,
-    headers: {
-      Authorization: `Bearer ${authKey}`
-    }
-  })
+  var domeImage = 'https://fupping.com/wp-content/uploads/2018/06/Personal.png'
   useEffect(() => {
     if (id) {
       setButton("Update")
@@ -41,7 +34,7 @@ export const New = () => {
       authaxios.get(`contact/${id}`)
         .then(result => {
           setAddData(result.data)
-          setImageLink(result.data.photo ? baseURL + result.data.photo : domeImage)
+          setImageLink(result.data.photo ? BaseURL + result.data.photo : domeImage)
         })
         .catch(error => {
           alert(error.response.data)
@@ -54,9 +47,6 @@ export const New = () => {
   }, [])
 
   const filehandler = (e) => {
-    setFile(
-      e.target.files[0]
-    )
     createImageLink(e.target.files[0])
     setAddData({ ...addData, photo: e.target.files[0] })
 
