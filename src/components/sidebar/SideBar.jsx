@@ -2,10 +2,8 @@ import React, { useContext } from 'react'
 import "./sidebar.scss"
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
-import ContactPageOutlinedIcon from '@mui/icons-material/ContactPageOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 import {toast } from 'react-toastify';
-
 import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
@@ -48,12 +46,6 @@ const SideBar = () => {
               </span>
             </li>
           </Link>
-          {/* <li>
-          <ContactPageOutlinedIcon className='icon'/>
-            <span>
-                Users
-            </span>
-          </li> */}
           <p className="title">USER</p>
           <Link to="/profile" style={{textDecoration:"none"}}>
             <li>

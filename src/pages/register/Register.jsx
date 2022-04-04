@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import registerImg from '../../static/loginImg/register2.svg'
 import { useNavigate } from 'react-router-dom';
 import {toast } from 'react-toastify';
