@@ -3,10 +3,17 @@ import Sidebar from '../../components/sidebar/SideBar'
 import Navbar from '../../components/navbar/NavBar'
 import './list.scss'
 import Datatable from '../../components/datatable/Datatable'
-import { authaxios } from '../../data/authAxios/AuthApi'
-
+import axios from 'axios'
 export const List = () => {
   const [data,setData]=useState([])
+  const authKey = localStorage.getItem('authorization')
+  const BaseURL = "http://localhost:4000/"
+  const authaxios = axios.create({
+      baseURL: BaseURL,
+      headers: {
+          Authorization: `Bearer ${authKey}`
+      }
+  })
   useEffect(() => {
     authaxios.get('contact')
     .then( result=>{

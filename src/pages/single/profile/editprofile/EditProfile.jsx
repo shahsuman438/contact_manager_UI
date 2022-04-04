@@ -4,7 +4,7 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Popup from '../../../../components/popup/Popup'
 import ResetPassword from '../resetPassword/ResetPassword';
 import {toast } from 'react-toastify';
-import { authaxios } from '../../../../data/authAxios/AuthApi'
+import axios from 'axios';
 import { BaseURL } from '../../../../data/authAxios/AuthApi';
 
 
@@ -12,6 +12,13 @@ function EditProfile(props) {
     const [openPopup, setOpenPopup] = useState(false)
     const [addData, setAddData] = useState(props.value)
     const [imageLink, setImageLink] = useState('')
+    const authKey = localStorage.getItem('authorization')
+    const authaxios = axios.create({
+        baseURL: BaseURL,
+        headers: {
+            Authorization: `Bearer ${authKey}`
+        }
+    })
     var domeImage = 'https://fupping.com/wp-content/uploads/2018/06/Personal.png'
     useEffect(() => {
         setImageLink(addData.photo ? BaseURL + addData.photo : domeImage)

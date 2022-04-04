@@ -6,8 +6,7 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Checkbox from '@mui/material/Checkbox';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import { authaxios } from '../../data/authAxios/AuthApi'
-import { BaseURL } from '../../data/authAxios/AuthApi';
+import axios from 'axios';
 
 const initialState = {
   name: '',
@@ -20,7 +19,14 @@ const initialState = {
 }
 
 export const New = () => {
-
+  const authKey = localStorage.getItem('authorization')
+  const BaseURL = "http://localhost:4000/"
+  const authaxios = axios.create({
+      baseURL: BaseURL,
+      headers: {
+          Authorization: `Bearer ${authKey}`
+      }
+  })
   const { id } = useParams()
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')

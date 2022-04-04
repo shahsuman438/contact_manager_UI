@@ -5,7 +5,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 const initialState={
   email:'',
   password:''
@@ -18,11 +17,10 @@ function Login() {
   const submitHandler=(event)=>{
       axios.post('http://localhost:4000/auth/login',userId)
       .then(res=>{
+        console.log(res.data.token)
         localStorage.setItem("authorization",res.data.token)
         setMsg('')
-        toast.success("Login Success",{
-          position:"top-center"
-        })
+        toast.success("Login Success")
         navigate("/")
       }).catch(error=>{
         console.log("Error##:-",error.response.data.msg)

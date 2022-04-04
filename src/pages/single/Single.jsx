@@ -6,13 +6,20 @@ import Chart from '../../components/chart/Chart'
 import Table from '../../components/table/Table'
 import Popup from '../../components/popup/Popup'
 import EditProfile from './profile/editprofile/EditProfile'
-import { authaxios } from '../../data/authAxios/AuthApi'
-
+import axios from 'axios'
+import { BaseURL } from '../../data/authAxios/AuthApi'
 
 export const Single = () => {
   const [data, setData] = useState([])
   const [contact, setContact] = useState([])
   const [openPopup, setOpenPopup] = useState(false)
+  const authKey = localStorage.getItem('authorization')
+  const authaxios = axios.create({
+      baseURL: BaseURL,
+      headers: {
+          Authorization: `Bearer ${authKey}`
+      }
+  })
   useEffect(() => {
     authaxios.get('auth/user')
       .then(result => {

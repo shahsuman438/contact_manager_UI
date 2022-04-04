@@ -7,12 +7,19 @@ import Widget from '../../components/widgets/Widget'
 import Tables from '../../components/table/Table'
 import "./home.scss"
 import { useState,useEffect } from 'react'
-import { authaxios } from '../../data/authAxios/AuthApi'
-
+import axios from 'axios'
 export const Home = () => {
   const [contact,setContact]=useState([])
   const [contactCount,setContactCount]=useState(0)
   const [userCount,setUserCount]=useState(0)
+  const authKey = localStorage.getItem('authorization')
+  const BaseURL = "http://localhost:4000/"
+  const authaxios = axios.create({
+      baseURL: BaseURL,
+      headers: {
+          Authorization: `Bearer ${authKey}`
+      }
+  })
   useEffect(() => {
    authaxios.get('contact')
     .then( result=>{

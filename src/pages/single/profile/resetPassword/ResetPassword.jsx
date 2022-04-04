@@ -3,7 +3,7 @@ import './resetpassword.scss'
 import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
-import { authaxios } from '../../../../data/authAxios/AuthApi'
+import { BaseURL } from '../../../../data/authAxios/AuthApi'
 
 const initialData = {
     lastpqassword: '',
@@ -11,6 +11,13 @@ const initialData = {
     cnfrmpassword: ''
 }
 function ResetPassword() {
+    const authKey = localStorage.getItem('authorization')
+    const authaxios = axios.create({
+        baseURL: BaseURL,
+        headers: {
+            Authorization: `Bearer ${authKey}`
+        }
+    })
     const [resetData, setResetData] = useState(initialData)
     const [msg, setMsg] = useState('')
     const navigate = useNavigate()

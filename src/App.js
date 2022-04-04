@@ -16,7 +16,7 @@ import PageNotFound from "./components/pagenotfound/PageNotFound";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import AuthProtected from "./components/auth/protected/AuthProtected";
 
 function App() {
   // const [dark,setDark]=useState(false)
@@ -32,7 +32,7 @@ function App() {
       <Routes>
         <Route path="/">,
           <Route index element={<Protected cmp={Home}/>}/>
-          <Route path="auth" element={<Auth/>}/>
+          <Route path="auth" element={<AuthProtected cmp={Auth}/>}/>
           <Route path="profile" element={<Protected cmp={Single}/>}></Route>
           <Route path="contacts">
             <Route index element={<Protected cmp={List}/>}></Route>
