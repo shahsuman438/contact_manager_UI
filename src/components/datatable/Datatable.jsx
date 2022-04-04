@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState,useEffect } from 'react'
 import './datatable.scss'
 import { Link } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -14,8 +14,10 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios'
 import { toast } from 'react-toastify';
 
-const Datatable = (props) => {
+const Datatable = () => {
+  const [query,setQuery]=useState('')
   const authKey=localStorage.getItem('authorization')
+  const [data,setData]=useState([])
   const authaxios=axios.create({
     baseURL:"http://localhost:4000/",
     headers:{
@@ -31,10 +33,21 @@ const Datatable = (props) => {
       toast.error(`${error.response.status} ${error.response.statusText}`)
    })
   }
+  useEffect(() => {
+    authaxios.get('contact')
+    .then( result=>{
+       setData(result.data.slice(0).reverse())
+    })
+    .catch(error=>{
+      console.log(error.response.data)
+   })
+   },[])
+
   return (
     <div className='datatable' >
     <div className="datatableTitle">
         Contact List
+        <input className='search' type="text" placeholder='Search....' onChange={(e)=>setQuery(e.target.value)} />
         <Link to="/contacts/new" className='link' style={{textDecoration:"none"}} value={"value from data table"}>
           <AddIcon className='add'/>
         </Link>
@@ -52,7 +65,7 @@ const Datatable = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.value.map((row) => (
+          {data.filter(item=>item.name.toLowerCase().includes(query)).map((row) => (
             <TableRow key={row._id}>
               <TableCell align="right" className='tablecell'>
                   <div className="cellWrapper">

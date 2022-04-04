@@ -88,6 +88,19 @@
             
         
     }
+    .search{
+        width: 350px;
+        border: none;
+        border-bottom: 2px solid #09632b6c;
+        height: 40px;
+        font-weight: bold;
+        font-size: 15px;
+        color: gray;
+        &:focus{
+            outline: none;
+            // box-shadow: 0px 0px 12px 0.8px #09632be1;
+        }
+    }
     
     
 }
