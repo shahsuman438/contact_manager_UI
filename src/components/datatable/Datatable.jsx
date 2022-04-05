@@ -51,7 +51,7 @@ const Datatable = () => {
           <TableRow>
             <TableCell align="left" className='tablecell'>photo</TableCell>
             <TableCell className='tablecell'>Name</TableCell>
-            <TableCell align="center" className='tablecell'>Number</TableCell>
+            {/* <TableCell align="center" className='tablecell'>Number</TableCell> */}
             <TableCell align="center" className='tablecell'>Email</TableCell>
             <TableCell align="center" className='tablecell'>Address</TableCell>
             <TableCell align="center" className='tablecell'>Action</TableCell>
@@ -67,7 +67,7 @@ const Datatable = () => {
                   </div>
               </TableCell>
               <TableCell component="th" scope="row" className='tablecell'>{row.name}</TableCell>
-              <TableCell align="center" className='tablecell'>+977-{row.number}</TableCell>
+              {/* <TableCell align="center" className='tablecell'>+977-{row.number}</TableCell> */}
               <TableCell align="center" className='tablecell'>{row.email}</TableCell>
               <TableCell align="center" className='tablecell'>{row.address}</TableCell>
               <TableCell align="center" className='tablecell action'>
