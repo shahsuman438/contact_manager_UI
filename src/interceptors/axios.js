@@ -22,6 +22,7 @@ authAxios.interceptors.request.use(
     }
 )
 
+
 authAxios.interceptors.response.use(
     response => {
         return response
@@ -45,6 +46,10 @@ authAxios.interceptors.response.use(
                 return Promise.reject(_error);
             }
 
+        }
+        if (error.response.status === 403) {
+            localStorage.removeItem("AccessToken")
+            toast.error("Session Expired Please Re-Login")
         }
         return Promise.reject(error);
     }

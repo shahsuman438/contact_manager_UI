@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import registerImg from '../../static/loginImg/register2.svg'
 import { useNavigate } from 'react-router-dom';
-import {toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import './register.scss'
 import axios from 'axios'
 
@@ -23,11 +23,12 @@ function Register() {
       toast.warn("Confirm Password not matched")
     } else {
       setMsg("")
-      axios.post('auth/register', register)
+      axios.post('http://localhost:4000/auth/register', register)
         .then(res => {
-          localStorage.setItem("authorization", res.data.token)
+          localStorage.setItem("AccessToken", res.data.AccessToken)
+          setMsg('')
+          toast.success("Register Success")
           navigate("/")
-          toast.success("Register success")
         }).catch(error => {
           setMsg(error.response.data.msg)
           toast.error(error.response.data.msg)

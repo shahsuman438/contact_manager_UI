@@ -29,7 +29,6 @@ function EditProfile(props) {
             const formData = new FormData()
             formData.append('photo', addData.photo)
             formData.append('name', addData.name)
-            // formData.append('email', addData.email)
             formData.append('phone', addData.phone)
             formData.append('country', addData.country)
             formData.append('address', addData.address)

@@ -14,14 +14,14 @@ export const Home = () => {
   const [contactCount, setContactCount] = useState(0)
   const [userCount, setUserCount] = useState(0)
 
-  useEffect(async () => {
-    await authAxios.get('/auth/users')
+  useEffect( () => {
+    async function get_data(){
+      await authAxios.get('/auth/users')
       .then(result => {
         setUserCount(result.data.length)
       })
       .catch(error => {
-        if(error.response.status==403)
-        {console.log("call logout function")}
+        if (error.response.status === 403) { console.log("call logout function") }
       })
     await authAxios.get('/contact')
       .then(result => {
@@ -29,9 +29,11 @@ export const Home = () => {
         setContact(result.data)
       })
       .catch(error => {
-        if(error.response.status==403)
-        {console.log("call logout function")}
+        if (error.response.status === 403) { console.log("call logout function") }
       })
+    }
+    get_data()
+
   }, [])
 
   return (
