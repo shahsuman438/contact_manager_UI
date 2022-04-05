@@ -4,24 +4,15 @@ import FileUploadIcon from '@mui/icons-material/FileUpload';
 import Popup from '../../../../components/popup/Popup'
 import ResetPassword from '../resetPassword/ResetPassword';
 import {toast } from 'react-toastify';
-import axios from 'axios';
-import { BaseURL } from '../../../../data/authAxios/AuthApi';
-
+import authAxios from '../../../../interceptors/axios';
 
 function EditProfile(props) {
     const [openPopup, setOpenPopup] = useState(false)
     const [addData, setAddData] = useState(props.value)
     const [imageLink, setImageLink] = useState('')
-    const authKey = localStorage.getItem('authorization')
-    const authaxios = axios.create({
-        baseURL: BaseURL,
-        headers: {
-            Authorization: `Bearer ${authKey}`
-        }
-    })
     var domeImage = 'https://fupping.com/wp-content/uploads/2018/06/Personal.png'
     useEffect(() => {
-        setImageLink(addData.photo ? BaseURL + addData.photo : domeImage)
+        setImageLink(addData.photo ? 'http://localhost:4000/' + addData.photo : domeImage)
     }, [])
 
     const filehandler = (e) => {
@@ -42,7 +33,7 @@ function EditProfile(props) {
             formData.append('phone', addData.phone)
             formData.append('country', addData.country)
             formData.append('address', addData.address)
-            authaxios.put(`auth/user/profile`, formData)
+            authAxios.put(`auth/user/profile`, formData)
                 .then(result => {
                     toast.success(result.data.msg,{
                         position:'top-center'

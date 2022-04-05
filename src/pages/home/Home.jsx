@@ -6,59 +6,56 @@ import SideBar from '../../components/sidebar/SideBar'
 import Widget from '../../components/widgets/Widget'
 import Tables from '../../components/table/Table'
 import "./home.scss"
-import { useState,useEffect } from 'react'
-import axios from 'axios'
+import { useState, useEffect } from 'react'
+import authAxios from '../../interceptors/axios'
+
 export const Home = () => {
-  const [contact,setContact]=useState([])
-  const [contactCount,setContactCount]=useState(0)
-  const [userCount,setUserCount]=useState(0)
-  const authKey = localStorage.getItem('authorization')
-  const BaseURL = "http://localhost:4000/"
-  const authaxios = axios.create({
-      baseURL: BaseURL,
-      headers: {
-          Authorization: `Bearer ${authKey}`
-      }
-  })
-  useEffect(() => {
-   authaxios.get('contact')
-    .then( result=>{
-       setContact(result.data)
-       setContactCount(result.data.length)
-    })
-    .catch(error=>{
-      console.log(error.response.data)
-   })
-   authaxios.get('/auth/users')
-    .then( result=>{
-       setUserCount(result.data.length)
-    })
-    .catch(error=>{
-      console.log(error.response.data)
-   })
-   },[])
+  const [contact, setContact] = useState([])
+  const [contactCount, setContactCount] = useState(0)
+  const [userCount, setUserCount] = useState(0)
+
+  useEffect(async () => {
+    await authAxios.get('/auth/users')
+      .then(result => {
+        setUserCount(result.data.length)
+      })
+      .catch(error => {
+        if(error.response.status==403)
+        {console.log("call logout function")}
+      })
+    await authAxios.get('/contact')
+      .then(result => {
+        setContactCount(result.data.length)
+        setContact(result.data)
+      })
+      .catch(error => {
+        if(error.response.status==403)
+        {console.log("call logout function")}
+      })
+  }, [])
+
   return (
     <div className='home'>
-       <SideBar/>
-       <div className="homecontainer">
-         <NavBar/>
-         <div className="widgets">
-           <Widget type="user" count={userCount} />
-           <Widget  type="Contacts" count={contactCount}/>
-           {/* <Widget  type="order" count={200}/>
+      <SideBar />
+      <div className="homecontainer">
+        <NavBar />
+        <div className="widgets">
+          <Widget type="user" count={userCount} />
+          <Widget type="Contacts" count={contactCount} />
+          {/* <Widget  type="order" count={200}/>
            <Widget  type="balance" count={2159}/> */}
-         </div>
-         <div className="charts">
-           <Featured/>
-           <Chart/>
-         </div>
-         <div className="listContainer">
-           <div className="listTitle">
-             Latest 5 Transaction
-           </div>
-           <Tables value={contact.slice(-5).reverse()}/>
-         </div>
-       </div>
+        </div>
+        <div className="charts">
+          <Featured />
+          <Chart />
+        </div>
+        <div className="listContainer">
+          <div className="listTitle">
+            Latest 5 Transaction
+          </div>
+          <Tables value={contact.slice(-5).reverse()} />
+        </div>
+      </div>
     </div>
   )
 }

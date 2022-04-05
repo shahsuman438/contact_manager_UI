@@ -6,22 +6,13 @@ import Chart from '../../components/chart/Chart'
 import Table from '../../components/table/Table'
 import Popup from '../../components/popup/Popup'
 import EditProfile from './profile/editprofile/EditProfile'
-import axios from 'axios'
-import { BaseURL } from '../../data/authAxios/AuthApi'
-
+import authAxios from '../../interceptors/axios'
 export const Single = () => {
   const [data, setData] = useState([])
   const [contact, setContact] = useState([])
   const [openPopup, setOpenPopup] = useState(false)
-  const authKey = localStorage.getItem('authorization')
-  const authaxios = axios.create({
-      baseURL: BaseURL,
-      headers: {
-          Authorization: `Bearer ${authKey}`
-      }
-  })
   useEffect(() => {
-    authaxios.get('auth/user')
+    authAxios.get('auth/user')
       .then(result => {
         setData(result.data)
       })
@@ -29,7 +20,7 @@ export const Single = () => {
         console.log(error.response.data)
       })
 
-    authaxios.get('contact')
+      authAxios.get('contact')
       .then(result => {
         setContact(result.data.filter(item => item.fav === true))
       })

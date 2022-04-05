@@ -6,7 +6,7 @@ import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 import Checkbox from '@mui/material/Checkbox';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import authAxios from '../../interceptors/axios';
 
 const initialState = {
   name: '',
@@ -19,14 +19,7 @@ const initialState = {
 }
 
 export const New = () => {
-  const authKey = localStorage.getItem('authorization')
   const BaseURL = "http://localhost:4000/"
-  const authaxios = axios.create({
-      baseURL: BaseURL,
-      headers: {
-          Authorization: `Bearer ${authKey}`
-      }
-  })
   const { id } = useParams()
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
@@ -37,7 +30,7 @@ export const New = () => {
     if (id) {
       setButton("Update")
       setTitle("View Contact")
-      authaxios.get(`contact/${id}`)
+      authAxios.get(`contact/${id}`)
         .then(result => {
           setAddData(result.data)
           setImageLink(result.data.photo ? BaseURL + result.data.photo : domeImage)
@@ -72,7 +65,7 @@ export const New = () => {
       formData.append('fav', addData.fav)        
       formData.append('address', addData.address)
       if (id) {
-        authaxios.put(`contact/${id}`, formData)
+        authAxios.put(`contact/${id}`, formData)
           .then(result => {
             toast.success(JSON.stringify(result.data.msg))
           })
@@ -82,7 +75,7 @@ export const New = () => {
           })
 
       } else {
-        authaxios.post('contact', formData)
+        authAxios.post('contact', formData)
           .then(result => {
             toast.success(JSON.stringify(result.data.msg))
           })

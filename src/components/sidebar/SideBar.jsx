@@ -7,26 +7,25 @@ import { darkmodeContext } from '../../context/darkmodeContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 import GroupIcon from '@mui/icons-material/Group';
-import axios from 'axios';
+import authAxios from '../../interceptors/axios'
 import "./sidebar.scss"
+
 const SideBar = () => {
   const {dispatch} =useContext(darkmodeContext)
   const navigate=useNavigate()
-  const logoutHandler=()=>{
-        localStorage.removeItem("authorization")
+  const logoutHandler=async ()=>{
+        localStorage.removeItem("AccessToken")
+        await authAxios.post('auth/logout',{},{withCredentials:true}).then(
+          res=>{
+            console.log(res)
+          }
+        )
         navigate('/auth')
         toast.success("Logout Done")
   }
   const [user,setUser]=useState([])
-  const authKey=localStorage.getItem('authorization')
-  const authaxios=axios.create({
-    baseURL:"http://localhost:4000/",
-    headers:{
-        Authorization:`Bearer ${authKey}`
-    }
-})
   useEffect(() => {
-    authaxios.get('auth/user')
+    authAxios.get('auth/user')
     .then( result=>{
        setUser(result.data.name.split(' ')[0])
     })

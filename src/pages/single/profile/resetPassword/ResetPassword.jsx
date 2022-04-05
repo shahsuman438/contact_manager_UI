@@ -1,23 +1,14 @@
 import React, { useState } from 'react'
 import './resetpassword.scss'
-import axios from 'axios'
 import { useNavigate } from 'react-router'
 import { toast } from 'react-toastify'
-import { BaseURL } from '../../../../data/authAxios/AuthApi'
-
+import authAxios from '../../../../interceptors/axios'
 const initialData = {
     lastpqassword: '',
     newpassword: '',
     cnfrmpassword: ''
 }
 function ResetPassword() {
-    const authKey = localStorage.getItem('authorization')
-    const authaxios = axios.create({
-        baseURL: BaseURL,
-        headers: {
-            Authorization: `Bearer ${authKey}`
-        }
-    })
     const [resetData, setResetData] = useState(initialData)
     const [msg, setMsg] = useState('')
     const navigate = useNavigate()
@@ -25,9 +16,8 @@ function ResetPassword() {
         event.preventDefault()
         if (resetData.newpassword === resetData.cnfrmpassword) {
             try {
-                authaxios.post('auth/user/reset', resetData)
+                authAxios.post('auth/user/reset', resetData)
                     .then(result => {
-                        // alert(result.data.msg + " you will be logout")
                         localStorage.removeItem("authorization")
                         navigate('/auth')
                         toast.success(result.data.msg)

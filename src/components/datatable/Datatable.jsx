@@ -11,21 +11,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import axios from 'axios'
+import authAxios from '../../interceptors/axios';
 import { toast } from 'react-toastify';
 
 const Datatable = () => {
   const [query,setQuery]=useState('')
-  const authKey=localStorage.getItem('authorization')
   const [data,setData]=useState([])
-  const authaxios=axios.create({
-    baseURL:"http://localhost:4000/",
-    headers:{
-        Authorization:`Bearer ${authKey}`
-    }
-  })
   const deleteHandler=(e)=>{
-    authaxios.delete(`contact/${e}`)
+    authAxios.delete(`contact/${e}`)
     .then( result=>{
        toast.success(result.data.msg)
     })
@@ -34,7 +27,7 @@ const Datatable = () => {
    })
   }
   useEffect(() => {
-    authaxios.get('contact')
+    authAxios.get('contact')
     .then( result=>{
        setData(result.data.slice(0).reverse())
     })
