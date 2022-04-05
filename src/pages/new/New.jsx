@@ -7,16 +7,18 @@ import Checkbox from '@mui/material/Checkbox';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import authAxios from '../../interceptors/axios';
+import CloseIcon from '@mui/icons-material/Close';
 
 const initialState = {
   name: '',
   email: '',
-  number: '',
+  number: [],
   fav: false,
   address: '',
   photo: [],
 
 }
+
 
 export const New = () => {
   const BaseURL = "http://localhost:4000/"
@@ -24,7 +26,9 @@ export const New = () => {
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
   const [imageLink, setImageLink] = useState('')
-  const [button,setButton] = useState('')
+  const [button, setButton] = useState('')
+  const [contactType, setContactType] = useState([])
+
   var domeImage = 'https://fupping.com/wp-content/uploads/2018/06/Personal.png'
   useEffect(() => {
     if (id) {
@@ -33,6 +37,7 @@ export const New = () => {
       authAxios.get(`contact/${id}`)
         .then(result => {
           setAddData(result.data)
+          setContactType(result.data.number)
           setImageLink(result.data.photo ? BaseURL + result.data.photo : domeImage)
         })
         .catch(error => {
@@ -48,7 +53,6 @@ export const New = () => {
   const filehandler = (e) => {
     createImageLink(e.target.files[0])
     setAddData({ ...addData, photo: e.target.files[0] })
-
   }
   const createImageLink = (e) => {
     setImageLink(URL.createObjectURL(e))
@@ -61,8 +65,8 @@ export const New = () => {
       formData.append('photo', addData.photo)
       formData.append('name', addData.name)
       formData.append('email', addData.email)
-      formData.append('number', addData.number)
-      formData.append('fav', addData.fav)        
+      formData.append('number', contactType)
+      formData.append('fav', addData.fav)
       formData.append('address', addData.address)
       if (id) {
         authAxios.put(`contact/${id}`, formData)
@@ -88,7 +92,19 @@ export const New = () => {
       toast.error(error)
     }
   }
-
+  const contactHandler = (index, e) => {
+    const values = [...contactType]
+    values[index][e.target.name] = e.target.value
+    setContactType(values)
+  }
+  const removeHandler = (index) => {
+    const values = [...contactType]
+    values.splice(index, 1)
+    setContactType(values)
+  }
+  const addHandler = () => {
+    setContactType([...contactType, { name: '', number: '' }])
+  }
   return (
     <div className='new'>
       <SideBar />
@@ -119,16 +135,32 @@ export const New = () => {
                 <label >Email</label>
                 <input type="email" placeholder='Email' required onChange={(e) => setAddData({ ...addData, email: e.target.value })} name="email" value={addData.email} />
               </div>
-              <div className="formInput">
-                <label >Contact number</label>
-                <input type="number" placeholder='Phone  Number' required onChange={(e) => setAddData({ ...addData, number: e.target.value })} name="number" value={addData.number} />
-              </div>
-
-              <div className="formInput">
+              <div className="formInput address">
                 <label >Address</label>
                 <input type="text" placeholder='Address' required onChange={(e) => setAddData({ ...addData, address: e.target.value })} name="address" value={addData.address} />
               </div>
+              {
+                contactType.map((contact, index) =>
+                  <div className="contact" key={index}>
+                    <div className="formInput">
+                      <label >Contact Type</label>
+                      <input type="text" placeholder='Contact Type' value={contact.name} required onChange={(e) => contactHandler(index, e)} name="name" />
+                    </div>
+                    <div className="formInput">
+                      <label >Contact Number</label>
+                      <input type="number" placeholder='Phone  Number' value={contact.number} required onChange={(e) => contactHandler(index, e)} name="number" />
+                    </div>
+                    <div className="action">
+                      <CloseIcon className='remove' onClick={() => removeHandler(index)} />
+                    </div>
+                  </div>
+                )
+              }
+              <div className="actionbtn">
               <button type='submit'>{button}</button>
+              <button type='button' className='addbtn' onClick={() => addHandler()} >Add Contact</button>
+              </div>
+              
             </form>
           </div>
         </div>
