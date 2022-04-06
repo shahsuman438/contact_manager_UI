@@ -70,7 +70,7 @@ const Datatable = () => {
                 <TableCell align="center" className='tablecell numbers'>
                   {
                     row.number.slice(-2).map((num) =>
-                      <div className="number ">
+                      <div className="number " key={num._id}>
                         <p>{num.name}:</p>
                         <p>+977-{num.number}</p>
                       </div>
