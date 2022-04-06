@@ -61,14 +61,17 @@ export const New = () => {
   const submitHandler = (event) => {
     event.preventDefault()
     try {
+      console.log("submit handler called")
       const formData = new FormData()
       formData.append('photo', addData.photo)
       formData.append('name', addData.name)
       formData.append('email', addData.email)
-      formData.append('number', contactType)
+      formData.append('number',JSON.stringify(contactType))
       formData.append('fav', addData.fav)
       formData.append('address', addData.address)
       if (id) {
+        console.log("with Id",formData)
+        console.log("with Id",contactType)
         authAxios.put(`contact/${id}`, formData)
           .then(result => {
             toast.success(JSON.stringify(result.data.msg))
@@ -79,6 +82,8 @@ export const New = () => {
           })
 
       } else {
+        console.log("without Id",formData)
+        console.log("without Id",addData)
         authAxios.post('contact', formData)
           .then(result => {
             toast.success(JSON.stringify(result.data.msg))
@@ -157,10 +162,9 @@ export const New = () => {
                 )
               }
               <div className="actionbtn">
-              <button type='submit'>{button}</button>
-              <button type='button' className='addbtn' onClick={() => addHandler()} >Add Contact</button>
+                <button type='submit' className='addbtn'>{button}</button>
+                <button type='button'  onClick={() => addHandler()} >Add Contact</button>
               </div>
-              
             </form>
           </div>
         </div>
