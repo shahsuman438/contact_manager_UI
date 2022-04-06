@@ -11,6 +11,7 @@ export const Single = () => {
   const [data, setData] = useState([])
   const [contact, setContact] = useState([])
   const [openPopup, setOpenPopup] = useState(false)
+  const [chart,setChart]=useState([])
   useEffect(() => {
     authAxios.get('auth/user')
       .then(result => {
@@ -27,14 +28,19 @@ export const Single = () => {
       .catch(error => {
         console.log(error.response.data)
       })
+      authAxios.get('/count')
+        .then(result => {
+          setChart(result.data)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
 
   }, [])
 
   const editHandler = () => {
     setOpenPopup(true)
   }
-
-
 
   return (
     <div className='single'>
@@ -72,7 +78,7 @@ export const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart></Chart>
+            <Chart value={chart}></Chart>
           </div>
         </div>
         <div className="bottom">

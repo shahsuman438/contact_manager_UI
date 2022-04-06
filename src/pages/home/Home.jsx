@@ -13,24 +13,31 @@ export const Home = () => {
   const [contact, setContact] = useState([])
   const [contactCount, setContactCount] = useState(0)
   const [userCount, setUserCount] = useState(0)
-
-  useEffect( () => {
-    async function get_data(){
+  const [chart,setChart]=useState([])
+  useEffect(() => {
+    async function get_data() {
       await authAxios.get('/auth/users')
-      .then(result => {
-        setUserCount(result.data.length)
-      })
-      .catch(error => {
-        if (error.response.status === 403) { console.log("call logout function") }
-      })
-    await authAxios.get('/contact')
-      .then(result => {
-        setContactCount(result.data.length)
-        setContact(result.data)
-      })
-      .catch(error => {
-        if (error.response.status === 403) { console.log("call logout function") }
-      })
+        .then(result => {
+          setUserCount(result.data.length)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
+      await authAxios.get('/contact')
+        .then(result => {
+          setContactCount(result.data.length)
+          setContact(result.data)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
+      await authAxios.get('/count')
+        .then(result => {
+          setChart(result.data)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
     }
     get_data()
 
@@ -49,7 +56,7 @@ export const Home = () => {
         </div>
         <div className="charts">
           <Featured />
-          <Chart />
+          <Chart value={chart} />
         </div>
         <div className="listContainer">
           <div className="listTitle">
