@@ -12,3 +12,17 @@
         }
     }
 }
+.numbers {
+    // background-color: rgb(16, 81, 119);
+    display: flex;
+
+    .number {
+        display: flex;
+        flex: row;
+        justify-content: center;
+        gap: 10px;
+        color: black;
+        
+
+    }
+}

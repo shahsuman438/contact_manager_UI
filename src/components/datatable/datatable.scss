@@ -1,9 +1,9 @@
-.datatable{
+.datatable {
     height: 650px;
     padding: 20px;
     font-weight: bold;
 
-    .datatableTitle{
+    .datatableTitle {
         width: 100%;
         font-size: 24px;
         color: gray;
@@ -11,7 +11,8 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        .link{
+
+        .link {
             margin-right: 6.5%;
             display: flex;
             width: 50px;
@@ -21,46 +22,53 @@
             font-weight: bold;
             background-color: rgba(20, 87, 20, 0.89);
             border-radius: 50%;
-            &:hover{
+
+            &:hover {
                 background-color: rgba(20, 87, 20, 0.747);
                 color: white;
             }
-            .add{
+
+            .add {
                 width: 100%;
                 height: 100%;
             }
         }
     }
-    .table{
-   
-        .cellWrapper{
+
+    .table {
+
+        .cellWrapper {
             display: flex;
             align-items: center;
             position: relative;
             flex-direction: row;
-            .image{
+
+            .image {
                 width: 50px;
                 height: 50px;
                 border-radius: 50%;
                 margin-right: 10px;
                 object-fit: cover;
             }
-            .fav{
-                    width: 15px;
-                    height: 15px;
-                    background-color: rgb(22, 196, 100);
-                    border-radius: 50%;
-                    color: white;
-                    display: flex;
-                    justify-content: center;
-                    font-size: 10px;
-                    font-weight: bold;
-                    position: absolute;
-                    bottom: 0;
-                    
+
+            .fav {
+                width: 15px;
+                height: 15px;
+                background-color: rgb(22, 196, 100);
+                border-radius: 50%;
+                color: white;
+                display: flex;
+                justify-content: center;
+                font-size: 10px;
+                font-weight: bold;
+                position: absolute;
+                bottom: 0;
+
             }
         }
-        .editButton,.deleteButton{
+
+        .editButton,
+        .deleteButton {
             width: 50px;
             margin-left: 6px;
             height: 50px;
@@ -68,27 +76,32 @@
             cursor: pointer;
             border: none;
         }
-        .editButton{
+
+        .editButton {
             background-color: rgba(48, 64, 155, 0.89);
             color: white;
             font-weight: bold;
-            &:hover{
+
+            &:hover {
                 background-color: rgba(48, 64, 155, 0.747);
             }
         }
-        .deleteButton{
+
+        .deleteButton {
             background-color: rgba(197, 22, 22, 0.89);
             color: white;
             font-weight: bold;
-            &:hover{
+
+            &:hover {
                 background-color: rgba(197, 22, 22, 0.747);
             }
         }
-        
-            
-        
+
+
+
     }
-    .search{
+
+    .search {
         width: 350px;
         border: none;
         border-bottom: 2px solid #09632b6c;
@@ -96,11 +109,26 @@
         font-weight: bold;
         font-size: 15px;
         color: gray;
-        &:focus{
+
+        &:focus {
             outline: none;
-            // box-shadow: 0px 0px 12px 0.8px #09632be1;
         }
     }
-    
-    
+
+
+}
+
+.numbers {
+    // background-color: rgb(16, 81, 119);
+    display: flex;
+
+    .number {
+        display: flex;
+        flex: row;
+        justify-content: center;
+        gap: 10px;
+        color: black;
+        
+
+    }
 }
