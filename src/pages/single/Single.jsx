@@ -78,7 +78,7 @@ export const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart value={chart}></Chart>
+            <Chart value={chart} title="Last 7 Days Your Contact Created"></Chart>
           </div>
         </div>
         <div className="bottom">

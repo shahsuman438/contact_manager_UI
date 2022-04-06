@@ -56,7 +56,7 @@ export const Home = () => {
         </div>
         <div className="charts">
           <Featured />
-          <Chart value={chart} />
+          <Chart value={chart} title="Last 7 Days Globally Contact Created"/>
         </div>
         <div className="listContainer">
           <div className="listTitle">

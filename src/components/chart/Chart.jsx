@@ -9,7 +9,7 @@ const Chart = (props) => {
   }, [props.value])
   return (
     <div className="chart">
-      <div className="title">Last week total contact</div>
+      <div className="title">{props.title}</div>
       <ResponsiveContainer width="100%" aspect={2 / 1}>
         <AreaChart width={730} height={250} data={chart}
           margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
