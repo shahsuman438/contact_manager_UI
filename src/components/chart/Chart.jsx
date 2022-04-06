@@ -2,38 +2,6 @@ import React, { useEffect, useState } from 'react'
 import './chart.scss'
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
-
-const data = [
-  {
-    name: "Sunday",
-    Total: 1200
-  },
-  {
-    name: "Monday",
-    Total: 1100
-  },
-  {
-    name: "Tuesday",
-    Total: 100
-  },
-  {
-    name: "Wednesday",
-    Total: 1200
-  },
-  {
-    name: "Thursday",
-    Total: 1300
-  },
-  {
-    name: "Friday",
-    Total: 700
-  },
-  {
-    name: "Saturday",
-    Total: 500
-  }
-
-];
 const Chart = (props) => {
   const [chart, setchart] = useState([])
   useEffect(() => {
@@ -48,7 +16,7 @@ const Chart = (props) => {
           <defs>
             <linearGradient id="total" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0} />
+              <stop offset="85%" stopColor="#8884d8" stopOpacity={0} />
             </linearGradient>
           </defs>
           <XAxis dataKey="name" stroke='gray' />

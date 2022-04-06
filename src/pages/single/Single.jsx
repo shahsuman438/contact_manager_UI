@@ -28,7 +28,7 @@ export const Single = () => {
       .catch(error => {
         console.log(error.response.data)
       })
-      authAxios.get('/count')
+      authAxios.get('/count/userContact')
         .then(result => {
           setChart(result.data)
         })
