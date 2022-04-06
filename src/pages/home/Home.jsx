@@ -14,6 +14,7 @@ export const Home = () => {
   const [contactCount, setContactCount] = useState(0)
   const [userCount, setUserCount] = useState(0)
   const [chart,setChart]=useState([])
+  const [gContact,setGcontact]=useState(0)
   useEffect(() => {
     async function get_data() {
       await authAxios.get('/auth/users')
@@ -38,6 +39,13 @@ export const Home = () => {
         .catch(error => {
           if (error.response.status === 403) { console.log("call logout function") }
         })
+        await authAxios.get('/globalContact')
+        .then(result => {
+          setGcontact(result.data.length)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
     }
     get_data()
 
@@ -51,8 +59,8 @@ export const Home = () => {
         <div className="widgets">
           <Widget type="user" count={userCount} />
           <Widget type="Contacts" count={contactCount} />
-          {/* <Widget  type="order" count={200}/>
-           <Widget  type="balance" count={2159}/> */}
+          <Widget  type="Global Contact" count={gContact}/>
+          {/* <Widget  type="balance" count={2159}/> */}
         </div>
         <div className="charts">
           <Featured />

@@ -24,9 +24,9 @@ const Widget = (props) => {
         icon:<PermContactCalendarIcon className="icon" style={{color:"blue",backgroundColor:"rgb(0,0,255,0.2)"}}/>
       }
       break;
-    case "order":
+    case "Global Contact":
       data={
-          title:"ORDER",
+          title:"TOTAL CONTACTS",
           isMoney:false,
           link:"Seel all earnings",
           icon:<PaidIcon className="icon" style={{color:"green",backgroundColor:"rgb(0,255,0,0.2)"}}/>
@@ -41,7 +41,6 @@ const Widget = (props) => {
         }
         break;
     default:
-      
   }
   return (
     <div className="widget">
