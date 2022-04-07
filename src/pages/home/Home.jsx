@@ -60,7 +60,6 @@ export const Home = () => {
           <Widget type="user" count={userCount} />
           <Widget type="Contacts" count={contactCount} />
           <Widget  type="Global Contact" count={gContact}/>
-          {/* <Widget  type="balance" count={2159}/> */}
         </div>
         <div className="charts">
           {/* <Featured /> */}

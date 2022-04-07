@@ -2,8 +2,7 @@ import "./widget.scss"
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import PersonIcon from '@mui/icons-material/Person';
 import PermContactCalendarIcon from '@mui/icons-material/PermContactCalendar';
-import PaidIcon from '@mui/icons-material/Paid';
-import BalanceIcon from '@mui/icons-material/Balance';
+import ContactsIcon from '@mui/icons-material/Contacts';
 const Widget = (props) => {
   let data;
   const {type,count}=props
@@ -29,15 +28,7 @@ const Widget = (props) => {
           title:"TOTAL CONTACTS",
           isMoney:false,
           link:"Seel all earnings",
-          icon:<PaidIcon className="icon" style={{color:"green",backgroundColor:"rgb(0,255,0,0.2)"}}/>
-        }
-        break;
-    case "balance":
-        data={
-          title:"BALANCE",
-          isMoney:true,
-          link:"Seel all earnings",
-          icon:<BalanceIcon className="icon" style={{color:"blue",backgroundColor:"rgb(0,0,255,0.2)"}}/>
+          icon:<ContactsIcon className="icon" style={{color:"green",backgroundColor:"rgb(0,255,0,0.2)"}}/>
         }
         break;
     default:
@@ -51,8 +42,8 @@ const Widget = (props) => {
        </div>
        <div className="right">
          <div className="percentage positive">
-         {<KeyboardArrowUpIcon/>}
-           20%</div>
+         {/* {<KeyboardArrowUpIcon/>} */}
+           </div>
           {data.icon}
        </div>
     </div>
