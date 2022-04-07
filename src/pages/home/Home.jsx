@@ -63,8 +63,8 @@ export const Home = () => {
           {/* <Widget  type="balance" count={2159}/> */}
         </div>
         <div className="charts">
-          <Featured />
-          <Chart value={chart} title="Last 7 Days Globally Contact Created"/>
+          {/* <Featured /> */}
+          <Chart value={chart} title="Last 7 Days Globally Contact Created" aspect={4/1}/>
         </div>
         <div className="listContainer">
           <div className="listTitle">
