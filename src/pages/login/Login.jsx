@@ -18,7 +18,7 @@ function Login() {
 
   const submitHandler = async (event) => {
     event.preventDefault()
-    axios.post('http://localhost:4000/auth/login', userId,{withCredentials:true})
+    axios.post(`${process.env.REACT_APP_API_URL}/auth/login`, userId,{withCredentials:true})
       .then(res => {
         localStorage.setItem("AccessToken", res.data.AccessToken)
         setMsg('')

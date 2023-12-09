@@ -1,7 +1,6 @@
 import axios from "axios";
-import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
-const baseURL = 'http://localhost:4000/'
+const baseURL = process.env.REACT_APP_API_URL;
 
 
 const authAxios = axios.create(

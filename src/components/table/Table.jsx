@@ -26,7 +26,7 @@ function Tables(props) {
             <TableRow key={row._id}>
               <TableCell align="right" className='tablecell'>
                 <div className="cellWrapper">
-                  <img src={row.photo ? `http://localhost:4000/${row.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="" className="image" />
+                  <img src={row.photo ? `${process.env.REACT_APP_API_URL}/${row.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="" className="image" />
                 </div>
               </TableCell>
               <TableCell component="th" scope="row" className='tablecell'>{row.name}</TableCell>

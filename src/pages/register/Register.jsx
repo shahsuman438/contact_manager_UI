@@ -23,7 +23,7 @@ function Register() {
       toast.warn("Confirm Password not matched")
     } else {
       setMsg("")
-      axios.post('http://localhost:4000/auth/register', register)
+      axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, register)
         .then(res => {
           localStorage.setItem("AccessToken", res.data.AccessToken)
           setMsg('')

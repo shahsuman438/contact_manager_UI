@@ -52,7 +52,7 @@ export const Single = () => {
             <div className="editButton" onClick={editHandler}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img src={data.photo ? `http://localhost:4000/${data.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
+              <img src={data.photo ? `${process.env.REACT_APP_API_URL}/${data.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
                 alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">

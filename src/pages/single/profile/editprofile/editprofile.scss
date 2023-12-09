@@ -1,13 +1,15 @@
-.editProfile{
+.editProfile {
     display: flex;
     width: 100%;
-    .container{
 
-        .top{
+    .container {
+
+        .top {
             margin: 20px;
             display: flex;
             justify-content: center;
-            .photo{
+
+            .photo {
                 display: flex;
                 margin: 10px;
                 flex-direction: column;
@@ -16,7 +18,8 @@
                 position: relative;
                 border-radius: 50%;
                 overflow: hidden;
-                img{
+
+                img {
                     width: 250px;
                     height: 250px;
                     object-fit: cover;
@@ -24,8 +27,9 @@
                     border-radius: 50%;
                     overflow: inherit;
                 }
-                label{
-                    width:100%;
+
+                label {
+                    width: 100%;
                     height: 30px;
                     background-color: rgba(73, 43, 43, 0.582);
                     position: absolute;
@@ -34,7 +38,8 @@
                     justify-content: center;
                     color: rgb(243, 242, 242);
                     cursor: pointer;
-                    &:hover{
+
+                    &:hover {
                         background-color: rgba(17, 2, 2, 0.61);
                         color: aliceblue;
                     }
@@ -42,29 +47,34 @@
             }
 
         }
-        hr{
+
+        hr {
             height: 1px;
             border: none;
             background-color: rgba(128, 128, 128, 0.562);
         }
-        .bottom{
+
+        .bottom {
             margin-top: 10px;
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             justify-content: space-around;
-            .formInput{
+
+            .formInput {
                 width: 40%;
                 display: flex;
                 flex-direction: column;
                 position: relative;
-                label{
+
+                label {
                     display: flex;
                     align-items: center;
                     padding-bottom: 5px;
                     font-weight: 800;
                 }
-                input{
+
+                input {
                     width: 100%;
                     height: 30px;
                     padding: 5px;
@@ -73,15 +83,18 @@
                     font-weight: bold;
                     color: rgb(12, 11, 11);
                     font-size: 15px;
-                    &:focus{
+
+                    &:focus {
                         outline: none;
                         box-shadow: 0px 0px 12px 0.8px #09126370;
                     }
                 }
-                .action{
+
+                .action {
                     padding: 0px;
                     margin: 0px;
-                    button{
+
+                    button {
                         margin-bottom: 0px;
                         width: 150px;
                         padding: 13px;
@@ -92,23 +105,26 @@
                         margin: 10px;
                         border-radius: 5px;
                         cursor: pointer;
-                        &:hover{
-                            background-color: rgb(27, 83, 136,0.74);
+
+                        &:hover {
+                            background-color: rgb(27, 83, 136, 0.74);
                         }
-                        
+
                     }
-                    .updatebtn{
+
+                    .updatebtn {
                         flex-grow: 1;
                         background-color: rgba(29, 119, 29, 0.938);
-                        &:hover{
+
+                        &:hover {
                             background-color: rgba(29, 119, 29, 0.74);
                         }
                     }
-                    
+
                 }
 
             }
-            
+
         }
     }
 }

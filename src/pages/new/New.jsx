@@ -21,7 +21,7 @@ const initialState = {
 
 
 export const New = () => {
-  const BaseURL = "http://localhost:4000/"
+  const BaseURL = `${process.env.REACT_APP_API_URL}/`
   const { id } = useParams()
   const [addData, setAddData] = useState(initialState)
   const [title, setTitle] = useState('')
