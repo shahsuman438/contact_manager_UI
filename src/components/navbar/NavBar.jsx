@@ -39,7 +39,7 @@ const NavBar = () => {
           </div> */}
           <Link to="/profile">
           <div className="item">
-            <img src={user.photo?`http://localhost:4000/${user.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="avatar" className='avatar'/>
+            <img src={user.photo?`${process.env.REACT_APP_API_URL}/${user.photo}`:"https://fupping.com/wp-content/uploads/2018/06/Personal.png"} alt="avatar" className='avatar'/>
           </div>
           </Link>
           

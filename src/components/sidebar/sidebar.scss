@@ -1,66 +1,75 @@
-.sidebar{
-    flex:1;
+.sidebar {
+    flex: 1;
     border-right: 0.5px solid rgb(235, 220, 220);
     min-height: 100vh;
     background-color: white;
-    .top{ 
+
+    .top {
         height: 50px;
         display: flex;
         align-items: center;
         justify-content: center;
-        .logo{
+
+        .logo {
             font-size: 20px;
-             font-weight: bold;
-             color: #6439ff;
+            font-weight: bold;
+            color: #1a7930;
         }
     }
-    hr{
+
+    hr {
         height: 0;
         border: 0.5px solid rgb(235, 220, 220);
     }
-    .center{
+
+    .center {
         padding-left: 10px;
-        ul{
+
+        ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            .title{
+
+            .title {
                 font-size: 10px;
                 font-weight: bold;
                 color: #999;
                 margin-top: 15px;
                 margin-bottom: 5px;
             }
-            li{
+
+            li {
                 display: flex;
                 align-items: center;
                 padding: 5px;
                 cursor: pointer;
-                &:hover{
-                    background-color:#ece8ff ;
+
+                &:hover {
+                    background-color: #ece8ff;
                 }
 
-                .css-i4bv87-MuiSvgIcon-root{
+                .css-i4bv87-MuiSvgIcon-root {
                     font-size: 20px;
-                    color: #6439ff;
+                    color: #1a7930;
                 }
 
-                span{
+                span {
                     font-size: 13px;
                     font-weight: 600;
-                    color:#888;
+                    color: #888;
                     margin-left: 10px;
                 }
             }
-            
+
         }
     }
-    .bottom{
+
+    .bottom {
         display: flex;
         margin: 10px;
         align-items: center;
-      
-        .colorOption{
+
+        .colorOption {
             width: 20px;
             height: 20px;
             border-radius: 5px;
@@ -68,16 +77,14 @@
             cursor: pointer;
             margin: 5px;
 
-            &:nth-child(1){
+            &:nth-child(1) {
                 background-color: whitesmoke;
             }
-            &:nth-child(2){
-                background-color: gray;
+
+            &:nth-child(2) {
+                background-color: rgb(90, 88, 88);
             }
-            &:nth-child(3){
-                background-color: gray;
-            }
-            
+
 
         }
     }

@@ -12,6 +12,7 @@ export const Single = () => {
   const [contact, setContact] = useState([])
   const [contacts, setContacts] = useState([])
   const [openPopup, setOpenPopup] = useState(false)
+  const [chart,setChart]=useState([])
   useEffect(() => {
     authAxios.get('auth/user')
       .then(result => {
@@ -29,14 +30,19 @@ export const Single = () => {
       .catch(error => {
         console.log(error.response.data)
       })
+      authAxios.get('/count/userContact')
+        .then(result => {
+          setChart(result.data)
+        })
+        .catch(error => {
+          if (error.response.status === 403) { console.log("call logout function") }
+        })
 
   }, [])
 
   const editHandler = () => {
     setOpenPopup(true)
   }
-
-
 
   return (
     <div className='single'>
@@ -48,7 +54,7 @@ export const Single = () => {
             <div className="editButton" onClick={editHandler}>Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img src={data.photo ? `http://localhost:4000/${data.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
+              <img src={data.photo ? `${process.env.REACT_APP_API_URL}/${data.photo}` : "https://fupping.com/wp-content/uploads/2018/06/Personal.png"}
                 alt="" className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">
@@ -74,7 +80,7 @@ export const Single = () => {
             </div>
           </div>
           <div className="right">
-            <Chart value={contacts}></Chart>
+            <Chart value={chart} title="Last 7 Days Your Contact Created" aspect={2/1}></Chart>
           </div>
         </div>
         <div className="bottom">
