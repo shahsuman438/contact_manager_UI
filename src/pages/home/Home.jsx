@@ -1,6 +1,5 @@
 
 import Chart from '../../components/chart/Chart'
-import Featured from '../../components/featured/Featured'
 import NavBar from '../../components/navbar/NavBar'
 import SideBar from '../../components/sidebar/SideBar'
 import Widget from '../../components/widgets/Widget'
@@ -48,8 +47,8 @@ export const Home = () => {
         })
     }
     get_data()
-
   }, [])
+
 
   return (
     <div className='home'>

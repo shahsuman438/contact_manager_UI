@@ -10,6 +10,7 @@ import authAxios from '../../interceptors/axios'
 export const Single = () => {
   const [data, setData] = useState([])
   const [contact, setContact] = useState([])
+  const [contacts, setContacts] = useState([])
   const [openPopup, setOpenPopup] = useState(false)
   const [chart,setChart]=useState([])
   useEffect(() => {
@@ -23,6 +24,7 @@ export const Single = () => {
 
       authAxios.get('contact')
       .then(result => {
+        setContacts(result.data)
         setContact(result.data.filter(item => item.fav === true))
       })
       .catch(error => {
